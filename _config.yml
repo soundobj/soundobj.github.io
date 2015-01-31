@@ -1,0 +1,13 @@
+# Site settings
+title: Mooching Beach
+email: soundobj@yahoo.com
+description: > # this means to ignore newlines until "baseurl:"
+  A collection of technology tidbits, and personal interests from David de Diego: 
+  Front End Developer, Musician and passionate traveller.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://soundobj.github.io" # the base hostname & protocol for your site
+# twitter_username: jekyllrb
+github_username: soundobj
+
+# Build settings
+markdown: kramdown
