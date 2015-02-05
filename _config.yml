@@ -11,3 +11,4 @@ github_username: soundobj
 
 # Build settings
 markdown: kramdown
+auto: true
