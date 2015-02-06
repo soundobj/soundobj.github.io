@@ -51,14 +51,16 @@ section.toggle {
 .menu-button {
     width: 5%;
     margin-top: 1%;
+    margin-left: 1%;
     /*float: left;*/
     position: absolute;
     left: 0px;
+    z-index: 25;
 }
 
 .menu-button-open {
     position: absolute;
-    left: 300px;
+    left: 31%;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     -ms-transition: all 0.3s;
@@ -103,7 +105,7 @@ button.close-menu:focus {
 
 nav.slide-menu-left {
     top: 0;
-    width: 300px;
+    width: 10%;
     height: 100%;
 }
 nav.slide-menu-left li {
