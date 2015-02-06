@@ -31,6 +31,7 @@
 	toggleSlideLeft.addEventListener( "click", function(){
 		console.log("click lieft");
 		classie.add( body, "sml-open" );
+
 		document.body.appendChild(mask);
 		activeNav = "sml-open";
 	} );
@@ -93,7 +94,10 @@
 
 	/* hide active menu if close menu button is clicked */
 	[].slice.call(document.querySelectorAll(".close-menu")).forEach(function(el,i){
+		console.log("adding event listener");
+		console.log(el);
 		el.addEventListener( "click", function(){
+			console.log("clicked close menu");
 			classie.remove( body, activeNav );
 			activeNav = "";
 			document.body.removeChild(mask);
