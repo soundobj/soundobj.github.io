@@ -31,7 +31,7 @@
 	toggleSlideLeft.addEventListener( "click", function(){
 		console.log("click lieft");
 		classie.add( body, "sml-open" );
-
+		$(".menu-button").addClass("menu-button-open");		
 		document.body.appendChild(mask);
 		activeNav = "sml-open";
 	} );
@@ -90,6 +90,7 @@
 		classie.remove( body, activeNav );
 		activeNav = "";
 		document.body.removeChild(mask);
+		$(".menu-button").removeClass("menu-button-open");		
 	} );
 
 	/* hide active menu if close menu button is clicked */

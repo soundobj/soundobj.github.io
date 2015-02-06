@@ -46,19 +46,26 @@ section.toggle {
     background: rgba(0, 0, 0, 0.8);
 }
 
+
+/* BESPOKE STYLES*/
 .menu-button {
     width: 5%;
     margin-top: 1%;
     /*float: left;*/
+    position: absolute;
+    left: 0px;
 }
 
 .menu-button-open {
-    width: 5%;
-    margin-top: 1%;
     position: absolute;
     left: 300px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
 }
-
+/* END BESPOKE STYLES*/
 
 /* ------------------------------------------------------------ *\
 |* ------------------------------------------------------------ *|

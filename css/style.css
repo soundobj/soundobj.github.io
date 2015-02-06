@@ -176,11 +176,12 @@ nav.slide-menu-right,
 nav.push-menu-right {
     right: -300px
 }
+/*
 body.sml-open nav.slide-menu-left,
 body.pml-open nav.push-menu-left {
     left: 0
 }
-body.smr-open nav.slide-menu-right,
+*/body.smr-open nav.slide-menu-right,
 body.pmr-open nav.push-menu-right {
     right: 0
 }
