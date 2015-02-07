@@ -6,6 +6,7 @@
 body {
     overflow-x: hidden
 }
+
 #wrapper {
     position: relative;
     z-index: 10;
@@ -17,37 +18,17 @@ body {
     -o-transition: all 0.3s;
     transition: all 0.3s;
 }
-section {
-    margin-bottom: 30px
-}
-section h1 {
-    font-family: "Oswald", sans-serif;
-    margin-bottom: 10px;
-}
-section p {
-    margin-bottom: 30px
-}
-section p:last-child {
-    margin-bottom: 0
-}
-section:last-child {
-    margin-bottom: 0
-}
-section.toggle {
-    text-align: center
-}
+
 .mask {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 15;
+    z-index: 9;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
 }
 
-
-/* BESPOKE STYLES*/
 .menu-button {
     width: 5%;
     margin-top: 1%;
@@ -67,73 +48,62 @@ section.toggle {
     -o-transition: all 0.3s;
     transition: all 0.3s;
 }
-/* END BESPOKE STYLES*/
 
-/* ------------------------------------------------------------ *\
-|* ------------------------------------------------------------ *|
-|* Menus
-|* ------------------------------------------------------------ *|
-\* ------------------------------------------------------------ */
-/* general style for all menus */
+body.sml-open nav.slide-menu-left {
+    left: 0
+}
+
 nav.menu {
     position: fixed;
-    z-index: 20;
+    /*z-index: 20;*/
+    z-index: 10;
     background-color: #67b5d1;
-    overflow: hidden;
+    overflow: hidden;   
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     -ms-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
 }
+
 nav.menu ul {
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding-top: 20%;
 }
 nav.menu a {
     font-weight: 300;
     color: #fff;
 }
-button.close-menu {
-    background-color: #3184a1;
-    color: #fff;
-}
-button.close-menu:focus {
-    outline: none
-}
 
+/* slide menu left and right, push menu left and right */
 nav.slide-menu-left {
     top: 0;
-    width: 10%;
+    width: 30%;
     height: 100%;
 }
+
 nav.slide-menu-left li {
     display: block;
     text-align: center;
     border-bottom: solid 1px #3184a1;
     border-top: solid 1px #b5dbe9;
 }
+
 nav.slide-menu-left li:first-child {
     border-top: none
 }
+
 nav.slide-menu-left li:last-child {
     border-bottom: none
 }
+
 nav.slide-menu-left a {
     display: block;
     padding: 10px;
     font-size: 18px;
 }
-nav.slide-menu-left button.close-menu {
-    margin: 10px 0;
-    padding: 10px 30px;
-    background-color: #3184a1;
-    color: #fff;
-}
+
 nav.slide-menu-left {
-    left: -300px
-}
-body.sml-open nav.slide-menu-left {
-    left: 0
+    left: -30%
 }
