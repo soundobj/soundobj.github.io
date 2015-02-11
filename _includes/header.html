@@ -1,11 +1,11 @@
 <header class="site-header">
-
+<p>new</p>
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
    viewBox="0 0 960 560" enable-background="new 0 0 960 560" xml:space="preserve">
-<g id="N2">
+<g id="N2" filter="url(#dropShadow)"> <!-- filter="url(#dropShadow)" -->
   <path id="end_14_" fill="#FF173D" d="M672.6,224.8l8.9-6.4l5,6.9c1.4,2,1,4.8-1,6.2l-1.8,1.3c-1.9,1.4-4.7,1-6.1-1L672.6,224.8z"/>
   <path id="end_13_" fill="#FF173D" d="M541.5,217.2h10.9v8.5c0,2.4-2,4.4-4.4,4.4h-2.2c-2.4,0-4.3-1.9-4.3-4.3V217.2z"/>
-  <g id="tube_11_">
+  <g id="tube_11_" filter="url(#glow)"> <!-- class"css-filter-blur" -->
     <path fill="#01B900" d="M687.1,228.8c0.3-1.2,0-2.5-0.7-3.5l-4-5.6c-0.1,0.6-0.3,1.2-0.5,1.8L687.1,228.8z"/>
     <path fill="#01B900" d="M673.4,225.9l4.3,5.9c0.8,1,1.9,1.6,3.1,1.8l-5.4-7.5c-0.1,0-0.2,0-0.3,0
       C674.4,226.1,673.9,226,673.4,225.9z"/>
@@ -160,6 +160,32 @@
     v-10.3c0.5,0.1,1,0.2,1.5,0.2h5c0.5,0,1-0.1,1.5-0.2v10.2c0.9-0.8,1.5-2,1.5-3.3v-7.5c1.8-1,3-3,3-5.2v-141
     C81.5,77.3,80.3,75.3,78.5,74.3z"/>
 </g>
+
+
+
+    <filter id="blur-effect-1">
+        <feGaussianBlur stdDeviation="5" />
+    </filter>
+
+
+    <filter id="dropShadow">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+    <feOffset dx="2" dy="4" />
+    <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+    </feMerge>
+  </filter>
+
+     <filter id="glow">
+    <feGaussianBlur in="StrokePaint" stdDeviation="5" />
+    <feOffset dx="0" dy="0" />
+    <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+    </feMerge>
+  </filter>
+
 </svg>
 
 

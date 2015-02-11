@@ -1,3 +1,16 @@
 .tube {
 	stroke: blue;
 }
+
+.css-filter-blur { margin: 10px;
+  -webkit-transition: all 5.3s ease-out; 
+     -moz-transition: all 0.3s ease-out; 
+      -ms-transition: all 0.3s ease-out; 
+       -o-transition: all 0.3s ease-out; 
+          transition: all 0.3s ease-out;
+}
+
+// #tube_11_ { 
+// 	-webkit-filter: blur(23px); 
+// 	filter: url(#blur-effect-1); 
+// }
