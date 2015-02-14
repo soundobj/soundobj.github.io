@@ -1,0 +1,27 @@
+{
+  "name": "soundobj.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.8.11",
+    "gulp-6to5": "^3.0.0",
+    "gulp-plumber": "^0.6.6",
+    "gulp-traceur": "^0.16.0",
+    "traceur": "^0.0.84"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/soundobj/soundobj.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/soundobj/soundobj.github.io/issues"
+  },
+  "homepage": "https://github.com/soundobj/soundobj.github.io"
+}
