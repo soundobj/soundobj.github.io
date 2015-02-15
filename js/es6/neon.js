@@ -1,7 +1,7 @@
 // neon.js
 class Neon {
   sayHi(name = 'Anonymous') {
-    console.log(`Hi neon ${name}!`);
+    console.log(`Hi neon 5 ${name}!`);
   }
 }
 
