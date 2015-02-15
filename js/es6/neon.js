@@ -1,9 +1,22 @@
 // neon.js
-class Neon {
-  sayHi(name = 'Anonymous') {
-    console.log(`Hi neon 5 ${name}!`);
-  }
+export class Neon {
+
+	constructor(elements) {	
+  		this.elements = elements;
+	}
+
+  	sayHi(name = 'Anonymous') {
+    	console.log(`Hi neon 7 ${name}!`);
+    	console.log(this.elements);
+    	return (`Hi neon 7 ${name}!`);
+  	}
+
+  	value() {
+    	return 'works';
+	}
 }
 
-var neon = new Neon();
+var neon = new Neon(
+	[['N','E','O','N1'],['L','O1','U','N2','G','E1']]
+);
 neon.sayHi();
