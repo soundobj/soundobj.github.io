@@ -4,7 +4,11 @@ export class Neon {
 	constructor(elements) {	
   		this.elements = elements;
 	}
-
+	/**
+	 * [sayHi description]
+	 * @param  {String} name [description]
+	 * @return {[type]}      [description]
+	 */
   	sayHi(name = 'Anonymous') {
     	console.log(`Hi neon 7 ${name}!`);
     	console.log(this.elements);

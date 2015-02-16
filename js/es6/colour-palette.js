@@ -5,6 +5,12 @@ export class ColourPalette {
 
 	}
 
+	
+	/** [rgbColorSequence description] */
+	rgbColorSequence(frequency,amplitude,center){
+		return
+	}
+
   	value() {
     	return 'works';
 	}
