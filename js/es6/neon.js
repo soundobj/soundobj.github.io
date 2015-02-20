@@ -42,4 +42,15 @@ withing a clone so the filter gets added to all subshapes. a way around it is to
 one the red and one the tube and position them layered. then we have autonomy when applying filters and colours
  */
 // finds childs within shape at any depth
-$("g[id='N2']").find("[id^='tube']").each(function(){$('#' + this.id).attr('filter','url(#blur)');});
+$("g[id='G']").find("[id^='tube']").each(function(){
+	var originalColour = $('#' + this.id).attr('fill');
+	console.log(originalColour);
+	$('#' + this.id).attr('fill','url(#upper)');
+	document.getElementById("animate1").setAttribute("to",originalColour);
+	document.getElementById("animate0").beginElement()
+});
+;
+
+//$("animate[id='animate0']").beginElement();
+
+console.log("done apply fill");
