@@ -1,0 +1,18 @@
+---
+layout: post
+title:  "SVG tips"
+date:   2015-02-21 16:49:40
+categories: SVG
+---
+
+I have been interested in SVG for a while; its capabilities for responsive design and interactivity are rather attractive. I've set myself the challenge to create a dynamic title for my blog site. I decided for a dynamic neon-like logo. I came up with something like this in Ilustrator:
+
+![illustrator screen shoot]({{ site.url }}/img/ilustrator.jpg)
+
+
+### Illustrator graphic export
+
+
+### Shape Reuse
+
+### Filters
