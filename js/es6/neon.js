@@ -18,6 +18,12 @@ export class Neon {
   	value() {
     	return 'works';
 	}
+
+	selectElement(id) {
+
+	}
+
+
 }
 
 var neon = new Neon(
@@ -53,4 +59,10 @@ $("g[id='G']").find("[id^='tube']").each(function(){
 
 //$("animate[id='animate0']").beginElement();
 
-console.log("done apply fill");
+
+
+// var svg = document.getElementById("neon").contentDocument;
+
+// console.log(svg.querySelector("document"));
+
+	console.log("done apply fill");

@@ -3,47 +3,26 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 1097.945 501.079" enable-background="new 0 0 1097.945 501.079" xml:space="preserve">
-<defs>
-    <filter id="blur" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur in="SourceGraphic"  dx="0" stdDeviation="5" result="blur">
-        <animate attributeName="stdDeviation" dur="0.2s" values="5;4;5" repeatCount="indefinite" />
-      </feGaussianBlur>
-      <!--beefs up the gaussian blur by copying it -->
-      <feOffset in="blur" dx="0" result="blurXtraHue"   /> 
-      <!-- copies the original graphic so its not lost and we only see the blur-->
-      <feOffset in="SourceGraphic" dx="0" result="originalInput" />
-      <!--beefs up the gaussian blur by copying it -->
-      <feOffset in="blur" width="140%" dx="0" result="blurXtraHue1" />
-      <feMerge>        
-        <feMergeNode in="blur"/>
-        <!--
-        <feMergeNode in="blurXtraHue"/>  
-        <feMergeNode in="blurXtraHue1"/>  
-        -->
-        <feMergeNode in="originalInput"/>    
-      </feMerge>
-    </filter>
-
-    <filter id="dropShadow" x="-40%" y="-40%" width="180%" height="180%">
-    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
-    <feOffset dx="2" dy="4" />
-    <feMerge>
-        <feMergeNode />
-        <feMergeNode in="SourceGraphic" />
-    </feMerge>
-  </filter>
-
- <linearGradient id="upper" gradientUnits="userSpaceOnUse" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop stop-color="rgb(0,0,0)" offset="0">
-        <animate attributeType="CSS" attributeName="stop-color" id="animate0"
-           dur="2s" begin="indefinite" fill="freeze" to="rgb(255,255,255)"/>
-      </stop>
-      <stop stop-color="rgb(0,0,0)" offset="1">
-        <animate attributeType="CSS" attributeName="stop-color" id="animate1"
-           dur="2s" begin="animate0.begin" fill="freeze" to="rgb(255,255,255)"/>
-      </stop>
- </linearGradient>
-</defs>
+<g id="subE1">
+	
+		<line fill="none" stroke="#B79F16" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="967.886" y1="454.083" x2="1055.886" y2="454.083"/>
+	
+		<line fill="none" stroke="#B79F16" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="968.386" y1="361.083" x2="1045.386" y2="361.083"/>
+	
+		<line fill="none" stroke="#B79F16" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="967.886" y1="268.083" x2="1055.886" y2="268.083"/>
+	
+		<line fill="none" stroke="#B79F16" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="948.72" y1="263.5" x2="948.72" y2="458.5"/>
+</g>
+<g id="E1">
+	
+		<line fill="none" stroke="#159BBA" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="981.386" y1="453.917" x2="1042.386" y2="453.917"/>
+	
+		<line fill="none" stroke="#159BBA" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="982.386" y1="360.917" x2="1031.386" y2="360.917"/>
+	
+		<line fill="none" stroke="#159BBA" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="981.386" y1="267.917" x2="1042.386" y2="267.917"/>
+	
+		<line fill="none" stroke="#159BBA" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="948.886" y1="277" x2="948.886" y2="445"/>
+</g>
 <g id="Ga">
 	<g id="tube_21_">
 		<path fill="#01B900" d="M822.886,453c-4.159,0-8.249-0.293-12.258-0.848c0.464,1.24-0.105,2.809-1.742,2.598
@@ -84,6 +63,20 @@
 	
 		<line fill="none" stroke="#159BBA" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="839.386" y1="360.917" x2="898.386" y2="360.917"/>
 </g>
+<g id="subN2">
+	
+		<line fill="none" stroke="#B79F16" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="561.886" y1="296" x2="561.886" y2="462"/>
+	
+		<polyline fill="none" stroke="#B79F16" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="28" points="
+		564.257,268.294 695.328,444.528 695.328,267.002 	"/>
+</g>
+<g id="N2_1_">
+	
+		<line fill="none" stroke="#159BBA" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="562.22" y1="309.897" x2="562.22" y2="447.897"/>
+	
+		<polyline fill="none" stroke="#159BBA" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="28" points="
+		573.257,280.294 696.328,448.528 696.328,280.002 	"/>
+</g>
 <g id="subU">
 	<path fill="#FF173D" d="M397.357,274.667h-10.941v-8.515c0-2.448,1.984-4.432,4.432-4.432h2.171c2.396,0,4.338,1.942,4.338,4.338
 		V274.667z"/>
@@ -98,15 +91,38 @@
 		c-4.687,0-8.5,3.854-8.5,8.593V425.8c0,22.166,14.945,40.2,33.315,40.2h86.369c18.37,0,33.315-18.034,33.315-40.2V281.093
 		C536.386,278.46,535.207,276.103,533.357,274.526z"/>
 </g>
+<g id="O1a">
+	<g id="tube_18_">
+		<path id="tube_22_" fill="#01B900" d="M262.886,263c-55.691,0-101,45.309-101,101s45.309,101,101,101s101-45.309,101-101
+			S318.578,263,262.886,263z M262.886,453c-4.159,0-8.249-0.293-12.257-0.848c0.464,1.24-0.105,2.809-1.742,2.598
+			c-5.278-0.679-10.191-1.059-15.009-3.523c-2.32-1.187-4.587-3.209-7.172-3.772c-2.187-0.476-4.119-0.885-6.078-1.978
+			c-1.419-0.792-1.142-2.455-0.18-3.263c-27.713-15.098-46.561-44.496-46.561-78.214c0-49.075,39.925-89,89-89
+			c7.383,0,14.556,0.91,21.419,2.612c-0.296-1.181,0.304-2.534,1.831-2.362c6.34,0.712,11.618,3.784,17.259,6.523
+			c1.44,0.699,1.203,2.292,0.265,3.132c28.619,14.814,48.226,44.706,48.226,79.095C351.886,413.075,311.961,453,262.886,453z"/>
+	</g>
+</g>
+<g id="subO1">
+	<circle id="end_2_" fill="none" stroke="#B70030" stroke-width="8" stroke-miterlimit="10" cx="262.886" cy="364" r="95"/>
+</g>
+<g id="O1_1_">
+	<g id="O_4_">
+		<path id="tube_5_" fill="#01B900" d="M221.642,441.151c-27.507-14.764-46.256-43.807-46.256-77.151
+			c0-48.248,39.252-87.5,87.5-87.5c7.591,0,14.958,0.973,21.986,2.799l6.047-13.902c-8.913-2.537-18.317-3.896-28.033-3.896
+			c-56.519,0-102.5,45.981-102.5,102.5c0,39.691,22.677,74.183,55.755,91.205L221.642,441.151z"/>
+		<path id="tube_1_" fill="#01B900" d="M306.84,271.415l-5.985,13.76c29.284,14.163,49.531,44.174,49.531,78.825
+			c0,48.248-39.252,87.5-87.5,87.5c-4.684,0-9.282-0.374-13.768-1.087l-5.577,14.248c6.267,1.202,12.733,1.839,19.345,1.839
+			c56.519,0,102.5-45.981,102.5-102.5C365.386,323.203,341.425,287.9,306.84,271.415z"/>
+	</g>
+</g>
 <g id="subL">
 	
-		<line id="subvert" fill="none" stroke="#B79F16" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="52.72" y1="266.5" x2="52.72" y2="461.5"/>
+		<line fill="none" stroke="#B79F16" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="52.72" y1="266.5" x2="52.72" y2="461.5"/>
 	
 		<line fill="none" stroke="#B79F16" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="73.886" y1="458.083" x2="161.886" y2="458.083"/>
 </g>
-<g id="L_1_" filter="url(#blur)">
+<g id="L_1_">
 	
-		<line id="vert" fill="none" stroke="#159BBA" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="52.886" y1="280" x2="52.886" y2="448"/>
+		<line fill="none" stroke="#159BBA" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="52.886" y1="280" x2="52.886" y2="448"/>
 	
 		<line fill="none" stroke="#159BBA" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="87.386" y1="457.917" x2="148.386" y2="457.917"/>
 </g>
@@ -176,28 +192,5 @@
 	
 		<polyline fill="none" stroke="#159BBA" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="28" points="
 		64.257,51.294 187.328,219.528 187.328,51.002 	"/>
-</g>
-<g id="subE2">
-  <use xlink:href="#subE" x="760" y="237"/>
-  <use xlink:href="#subvert" x="895" y="0"/>
-</g>
-<g id="E2">
-  <use xlink:href="#E_1_" x="760" y="237"/>
-  <use xlink:href="#vert" x="895" y="0"/>
-</g>
-<g id="subN2">
-  <use xlink:href="#subN1" x="36" y="230"/>
-</g>
-<g id="N2">
-  <use xlink:href="#N1" x="36" y="230"/>
-</g>
-<g id="O1a">
-	<use xlink:href="#Oa" x="-136" y="234"/>
-</g>
-<g id="subO1">
-	<use xlink:href="#subO" x="-136" y="234"/>
-</g>
-<g id="O1">
-	<use xlink:href="#O_2_" x="-136" y="234"/>
 </g>
 </svg>

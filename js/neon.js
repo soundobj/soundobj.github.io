@@ -13,7 +13,8 @@ System.registerModule("es6/neon.js", [], function() {
     },
     value: function() {
       return 'works';
-    }
+    },
+    selectElement: function(id) {}
   }, {});
   var neon = new Neon([['N', 'E', 'O', 'N1'], ['L', 'O1', 'U', 'N2', 'G', 'E1']]);
   neon.sayHi();
