@@ -14,11 +14,9 @@
     <!--beefs up the gaussian blur by copying it -->
     <feOffset in="blur" width="140%" dx="0" result="blurXtraHue1" />
     <feMerge>        
-      <feMergeNode in="blur"/>
-      
+      <feMergeNode in="blur"/>   
       <feMergeNode in="blurXtraHue"/>  
       <feMergeNode in="blurXtraHue1"/>  
-      <!---->
       <feMergeNode in="originalInput"/>    
     </feMerge>
   </filter>
@@ -154,6 +152,10 @@
 <animate id="second" attributeName="fill" from="white" to="rgb(200,30,80)" begin="first.end" dur="0.1s"/>
 <animate id="third" attributeName="fill" from="black" to="white" begin="second.end" dur="0.1s"/>
 <animate attributeName="fill" from="black" to="rgb(200,30,80)" begin="third.end" dur="0.1s" fill="freeze"/>
+<animate id="firstStroke" attributeName="stroke" from="black" to="white" begin="0s" dur="0.1s"/>
+<animate id="secondStroke" attributeName="stroke" from="white" to="rgb(200,30,80)" begin="firstStroke.end" dur="0.1s"/>
+<animate id="thirdStroke" attributeName="stroke" from="black" to="white" begin="secondStroke.end" dur="0.1s"/>
+<animate attributeName="stroke" from="black" to="rgb(200,30,80)" begin="thirdStroke.end" dur="0.1s" fill="freeze"/>
 </use>
 <!-- <animate attributeName="fill" from="yellow" to="#00FFFF" begin ="prev.end" dur="1s"/>
 <animate attributeName="fill" from="#00FFFF" to="blue" begin="prev.end" dur="1s" />
