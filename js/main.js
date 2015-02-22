@@ -59,9 +59,6 @@ System.registerModule("es6/main.js", [], function() {
   var neonWords = [['N', 'E', 'O', 'N1'], ['L', 'O1', 'U', 'N2', 'G', 'E1']];
   var randomFlicker = new RandomFlicker(neonWords[0].concat(neonWords[1]));
   var neonRandom = new Neon(randomFlicker.random());
-  for (var i = 0; i < 20; i++) {
-    console.log(neonRandom.getElement());
-  }
   console.log("after loop");
   $("g[id='G']").find("[id^='tube']").each(function() {
     var originalColour = $('#' + this.id).attr('fill');
