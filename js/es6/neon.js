@@ -19,7 +19,8 @@ export class Neon {
     	return 'works';
 	}
 
-	selectElement(id) {
+	selectLeterComponents(jquerySelector, call) {
+
 
 	}
 
