@@ -1,5 +1,5 @@
 <header class="site-header">
-<div id="palettes"><p>new9</p></div>
+<div id="palettes"><p>12</p></div>
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
    viewBox="0 0 1097.945 501.079" enable-background="new 0 0 1097.945 501.079" xml:space="preserve">
 <defs>
@@ -34,13 +34,29 @@
    <linearGradient id="upper" gradientUnits="userSpaceOnUse" x1="0%" y1="0%" x2="0%" y2="100%">
         <stop stop-color="rgb(20,10,90)" offset="0">
           <animate attributeType="CSS" attributeName="stop-color" id="animate0"
-             dur="2s" begin="indefinite" fill="freeze" to="rgb(255,255,255)"/>
+             dur="0.5s" begin="indefinite" fill="freeze" to="rgb(20,40,255)"/>
         </stop>
         <stop stop-color="rgb(200,30,80)" offset="1">
           <animate attributeType="CSS" attributeName="stop-color" id="animate1"
              dur="2s" begin="animate0.begin" fill="freeze" to="rgb(255,255,255)"/>
         </stop>
+        <stop stop-color="rgb(0,0,0)" offset="1">
+          <animate attributeType="CSS" attributeName="stop-color" id="animate2"
+             dur="2s" begin="animate1.end" fill="freeze" to="rgb(255,255,255)"/>
+        </stop>
    </linearGradient>
+
+
+   <linearGradient id="flickerEffect" gradientUnits="userSpaceOnUse" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop stop-color="rgb(20,10,90)" offset="0">
+          <animate attributeType="CSS" attributeName="stop-color" id="flicker"
+             dur="2s" begin="indefinite" fill="freeze" to="rgb(255,255,255)"/>
+        </stop>
+        <stop stop-color="rgb(200,30,80)" offset="1">
+          <animate attributeType="CSS" attributeName="stop-color" id="flicker1"
+             dur="2s" begin="flicker.begin" fill="freeze" to="rgb(255,255,255)"/>
+        </stop>
+   </linearGradient>   
 
   <g id="subG-def">
     <path d="M912.037,382.344c-8.615,42.1-46.108,72.656-89.151,72.656c-50.178,0-91-40.822-91-91s40.822-91,91-91
@@ -130,38 +146,38 @@
 <g id="subG" stroke="orange" fill="orange"><use xlink:href="#subG-def"/></g>
 <g id="G" stroke="url(#upper)" fill="url(#upper)"><use xlink:href="#G-def"/></g>
 <!-- U -->
-<g id="subU" stroke="orange" fill="orange"><use xlink:href="#subU-def"/></g>
-<g id="U" stroke="url(#upper)" fill="url(#upper)"><use xlink:href="#U-def"/></g>
+<g id="subU" fill="orange"><use xlink:href="#subU-def"/></g>
+<g id="U" fill="rgb(200,30,80)"><use xlink:href="#U-def"/></g>
 <!-- L -->
-<g id="subL" stroke="orange" fill="orange"><use xlink:href="#subL-def"/></g>
-<g id="L" stroke="url(#upper)" fill="url(#upper)"><use xlink:href="#L-def"/></g>
+<g id="subL" stroke="orange"><use xlink:href="#subL-def"/></g>
+<g id="L" stroke="rgb(200,30,80)"><use xlink:href="#L-def"/></g>
 <!-- N -->
-<g id="subN1" stroke="orange" fill="orange"><use xlink:href="#subN1-def"/></g>
-<g id="N1" stroke="url(#upper)" fill="url(#upper)"><use xlink:href="#N1-def"/></g>
+<g id="subN1" stroke="orange"><use xlink:href="#subN1-def"/></g>
+<g id="N1" stroke="rgb(200,30,80)"><use xlink:href="#N1-def"/></g>
 <!-- O -->
-<g id="subO" stroke="orange" fill="orange"><use xlink:href="#subO-def"/></g>
-<g id="O" stroke="url(#upper)" fill="url(#upper)"><use xlink:href="#O-def"/></g>
+<g id="subO" stroke="orange"><use xlink:href="#subO-def"/></g>
+<g id="O" fill="rgb(200,30,80)"><use xlink:href="#O-def"/></g>
 <!-- E -->
-<g id="subE" stroke="orange" fill="orange"><use xlink:href="#subE-def"/></g>
-<g id="E" stroke="url(#upper)" fill="url(#upper)"><use xlink:href="#E-def"/></g>
+<g id="subE" stroke="orange"><use xlink:href="#subE-def"/></g>
+<g id="E" stroke="rgb(200,30,80)"><use xlink:href="#E-def"/></g>
 <!-- N -->
-<g id="subN" stroke="orange" fill="orange"><use xlink:href="#subN-def"/></g>
-<g id="N" stroke="url(#upper)" fill="url(#upper)"><use xlink:href="#N-def"/></g>
+<g id="subN" stroke="orange"><use xlink:href="#subN-def"/></g>
+<g id="N" stroke="rgb(200,30,80)"><use xlink:href="#N-def"/></g>
 <!-- E COPY -->
 <g id="subE1" stroke="orange">
   <use xlink:href="#subE" x="760" y="237"/>
   <use xlink:href="#subvert" x="895" y="0"/>
 </g>
-<g id="E1" stroke="url(#upper)">
+<g id="E1" stroke="rgb(200,30,80)">
   <use xlink:href="#E" x="760" y="237"/>
   <use xlink:href="#vert" x="895" y="0"/>
 </g>
 <!-- N COPY -->
-<g id="subN2" stroke="orange"><use xlink:href="#subN1" x="36" y="230"/></g>
-<g id="N2" stroke="url(#upper)"><use xlink:href="#N1" x="36" y="230"/></g>
+<g id="subN2" stroke="orange"><use xlink:href="#subN1-def" x="36" y="230"/></g>
+<g id="N2" stroke="rgb(200,30,80)"><use xlink:href="#N1-def" x="36" y="230"/></g>
 <!-- O COPY -->
-<g id="subO1" stroke="orange" fill="orange"><use xlink:href="#subO" x="-136" y="234"/></g>
-<g id="O1" stroke="url(#upper)" fill="url(#upper)"><use xlink:href="#O" x="-136" y="234"/></g>
+<g id="subO1" stroke="orange"><use xlink:href="#subO-def" x="-136" y="234"/></g>
+<g id="O1" fill="rgb(200,30,80)"><use xlink:href="#O-def" x="-136" y="234"/></g>
 </svg>
 
 <!-- Navigation -->
