@@ -16,11 +16,10 @@ System.registerModule("es6/randomFlicker.js", [], function() {
   var __moduleName = "es6/randomFlicker.js";
   var RandomFlicker = function RandomFlicker(elements) {
     this.elements = elements;
-    this.flickers = [5, 7, 9, 11, 13, 15, 17];
-    this.flickerNumber;
-    this.counter;
+    this.randomGenerator = this.random();
   };
-  ($traceurRuntime.createClass)(RandomFlicker, {random: $traceurRuntime.initGeneratorFunction(function $__1() {
+  ($traceurRuntime.createClass)(RandomFlicker, {
+    random: $traceurRuntime.initGeneratorFunction(function $__1() {
       return $traceurRuntime.createGeneratorInstance(function($ctx) {
         while (true)
           switch ($ctx.state) {
@@ -46,7 +45,12 @@ System.registerModule("es6/randomFlicker.js", [], function() {
               return $ctx.end();
           }
       }, $__1, this);
-    })}, {});
+    }),
+    getElement: function() {
+      console.log("call random within");
+      return this.randomGenerator.next();
+    }
+  }, {});
   return {get RandomFlicker() {
       return RandomFlicker;
     }};
@@ -59,16 +63,7 @@ System.registerModule("es6/main.js", [], function() {
   var neonWords = [['N', 'E', 'O', 'N1'], ['L', 'O1', 'U', 'N2', 'G', 'E1']];
   var randomFlicker = new RandomFlicker(neonWords[0].concat(neonWords[1]));
   var neonRandom = new Neon(randomFlicker.random());
-  console.log("after loop");
-  $("g[id='G']").find("[id^='tube']").each(function() {
-    var originalColour = $('#' + this.id).attr('fill');
-    console.log(originalColour);
-    $('#' + this.id).attr('fill', 'url(#upper)');
-    document.getElementById("animate1").setAttribute("to", originalColour);
-    document.getElementById("animate0").beginElement();
-  });
-  ;
-  console.log("done apply fill");
+  window.neonRandom = randomFlicker;
   return {};
 });
 System.get("es6/main.js" + '');

@@ -147,19 +147,15 @@
 <!-- G -->
 <g id="subG" stroke="orange" fill="orange"><use xlink:href="#subG-def"/></g>
 <g id="G" stroke="rgb(200,30,80)" filter="url(#blur)" fill="rgb(200,30,80)">
-<use xlink:href="#G-def">
+<use xlink:href="#G-def"></use>
 <animate id="first" attributeName="fill" from="black" to="white" begin="0s" dur="0.1s"/>
 <animate id="second" attributeName="fill" from="white" to="rgb(200,30,80)" begin="first.end" dur="0.1s"/>
 <animate id="third" attributeName="fill" from="black" to="white" begin="second.end" dur="0.1s"/>
-<animate attributeName="fill" from="black" to="rgb(200,30,80)" begin="third.end" dur="0.1s" fill="freeze"/>
+<animate id="fourth" attributeName="fill" from="black" to="rgb(200,30,80)" begin="third.end" dur="0.1s" fill="freeze"/>
 <animate id="firstStroke" attributeName="stroke" from="black" to="white" begin="0s" dur="0.1s"/>
 <animate id="secondStroke" attributeName="stroke" from="white" to="rgb(200,30,80)" begin="firstStroke.end" dur="0.1s"/>
 <animate id="thirdStroke" attributeName="stroke" from="black" to="white" begin="secondStroke.end" dur="0.1s"/>
-<animate attributeName="stroke" from="black" to="rgb(200,30,80)" begin="thirdStroke.end" dur="0.1s" fill="freeze"/>
-</use>
-<!-- <animate attributeName="fill" from="yellow" to="#00FFFF" begin ="prev.end" dur="1s"/>
-<animate attributeName="fill" from="#00FFFF" to="blue" begin="prev.end" dur="1s" />
-<animate attributeName="fill" from="blue" to="indigo" begin="prev.end" dur="1s" fill="freeze" /> -->
+<animate id="fourthStroke" attributeName="stroke" from="black" to="rgb(200,30,80)" begin="thirdStroke.end" onend="console.log('animation ended');" dur="0.1s" fill="freeze"/>
 </g>
 <!-- U -->
 <g id="subU" fill="orange"><use xlink:href="#subU-def"/></g>
