@@ -16,13 +16,4 @@ export class RandomFlicker {
 	getElement() {	
 		return this.randomGenerator.next();
 	}
-
-	// TODO: create function next();
-	// detach the animation
-	// $("g[id='G'] animate").detach;
-	// 
-	// attach it to the next random letter
-	// 
-	// change the onend callback to neonRandom.next()
-	// restart the animation with id beginElement()
 }

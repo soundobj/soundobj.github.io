@@ -24,10 +24,6 @@ System.registerModule("es6/randomFlicker.js", [], function() {
         while (true)
           switch ($ctx.state) {
             case 0:
-              console.log("call random");
-              $ctx.state = 9;
-              break;
-            case 9:
               $ctx.state = (true) ? 5 : -2;
               break;
             case 5:
@@ -39,7 +35,7 @@ System.registerModule("es6/randomFlicker.js", [], function() {
               return this.elements[Math.floor(Math.random() * this.elements.length)];
             case 2:
               $ctx.maybeThrow();
-              $ctx.state = 9;
+              $ctx.state = 0;
               break;
             default:
               return $ctx.end();
@@ -47,7 +43,6 @@ System.registerModule("es6/randomFlicker.js", [], function() {
       }, $__1, this);
     }),
     getElement: function() {
-      console.log("call random within");
       return this.randomGenerator.next();
     }
   }, {});
@@ -62,8 +57,40 @@ System.registerModule("es6/main.js", [], function() {
   var RandomFlicker = System.get("es6/randomFlicker.js").RandomFlicker;
   var neonWords = [['N', 'E', 'O', 'N1'], ['L', 'O1', 'U', 'N2', 'G', 'E1']];
   var randomFlicker = new RandomFlicker(neonWords[0].concat(neonWords[1]));
-  var neonRandom = new Neon(randomFlicker.random());
-  window.neonRandom = randomFlicker;
+  function whichTransitionEvent() {
+    var t;
+    var el = document.createElement('fakeelement');
+    var transitions = {
+      'transition': 'transitionend',
+      'OTransition': 'oTransitionEnd',
+      'MozTransition': 'transitionend',
+      'WebkitTransition': 'webkitTransitionEnd'
+    };
+    var animIterationEventNames = {
+      "WebkitAnimation": "webkitAnimationIteration",
+      "MozAnimation": "animationiteration",
+      "OAnimation": "oAnimationIteration",
+      "msAnimation": "MSAnimationIteration",
+      "animation": "animationiteration"
+    };
+    var animEndEventNames = {
+      "WebkitAnimation": "webkitAnimationEnd",
+      "MozAnimation": "animationend",
+      "OAnimation": "oAnimationend",
+      "msAnimation": "MSAnimationEnd",
+      "animation": "animationend"
+    };
+    for (t in animEndEventNames) {
+      if (el.style[t] !== undefined) {
+        return animEndEventNames[t];
+      }
+    }
+  }
+  var transitionEvent = whichTransitionEvent();
+  var e = document.getElementById('G');
+  transitionEvent && e.addEventListener(transitionEvent, function() {
+    console.log('Transition complete!  This is the callback, no library needed!');
+  });
   return {};
 });
 System.get("es6/main.js" + '');
