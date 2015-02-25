@@ -146,16 +146,19 @@
 <!-- STUFF DRAWN ON THE SCREEN -->
 <!-- G -->
 <g id="subG" stroke="orange" fill="orange"><use xlink:href="#subG-def"/></g>
-<g id="G" stroke="rgb(200,30,80)" filter="url(#blur)" fill="rgb(200,30,80)">
+<g id="G" class="bulb" style="stroke:rgb(200,30,80);fill:rgb(200,30,80);" filter="url(#blur)">
+<!-- stroke="rgb(200,30,80)" fill="rgb(200,30,80)" -->
 <use xlink:href="#G-def"></use>
-<animate id="first" attributeName="fill" from="black" to="white" begin="0s" dur="0.1s"/>
-<animate id="second" attributeName="fill" from="white" to="rgb(200,30,80)" begin="first.end" dur="0.1s"/>
-<animate id="third" attributeName="fill" from="black" to="white" begin="second.end" dur="0.1s"/>
-<animate id="fourth" attributeName="fill" from="black" to="rgb(200,30,80)" begin="third.end" dur="0.1s" fill="freeze"/>
-<animate id="firstStroke" attributeName="stroke" from="black" to="white" begin="0s" dur="0.1s"/>
-<animate id="secondStroke" attributeName="stroke" from="white" to="rgb(200,30,80)" begin="firstStroke.end" dur="0.1s"/>
-<animate id="thirdStroke" attributeName="stroke" from="black" to="white" begin="secondStroke.end" dur="0.1s"/>
-<animate id="fourthStroke" attributeName="stroke" from="black" to="rgb(200,30,80)" begin="thirdStroke.end" onend="console.log('animation ended');" dur="0.1s" fill="freeze"/>
+  <!--
+  <animate onbegin="console.log('fillStart');" id="flickerStart" attributeName="fill" from="black" to="white" begin="0s" dur="0.1s"/>
+  <animate id="flicker1" attributeName="fill" from="white" to="rgb(200,30,80)" begin="flickerStart.end" dur="0.1s"/>
+  <animate id="flicker2" attributeName="fill" from="black" to="white" begin="flicker1.end" dur="0.1s"/>
+  <animate id="flickerEnd" attributeName="fill" from="black" to="rgb(200,30,80)" begin="flicker2.end" dur="0.1s" fill="freeze"/>
+  <animate onbegin="console.log('strokeStart');" id="flickerStrokeStart" attributeName="stroke" from="black" to="white" begin="0s" dur="0.1s"/>
+  <animate id="flickerStroke1" attributeName="stroke" from="white" to="rgb(200,30,80)" begin="flickerStrokeStart.end" dur="0.1s"/>
+  <animate id="flickerStroke2" attributeName="stroke" from="black" to="white" begin="flickerStroke1.end" dur="0.1s"/>
+  <animate id="flickerStrokeEnd" attributeName="stroke" from="black" to="rgb(200,30,80)" begin="flickerStroke2.end" onend="console.log('animation ended');neonRandom.next();" dur="0.1s" fill="freeze"/>
+  -->
 </g>
 <!-- U -->
 <g id="subU" fill="orange"><use xlink:href="#subU-def"/></g>
