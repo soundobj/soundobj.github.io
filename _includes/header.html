@@ -5,7 +5,7 @@
 <defs>
   <filter id="blur" x="-40%" y="-40%" width="180%" height="180%">
     <feGaussianBlur in="SourceGraphic"  dx="0" stdDeviation="5" result="blur">
-      <animate attributeName="stdDeviation" dur="0.2s" values="6;4;5" repeatCount="indefinite" />
+      <animate attributeName="stdDeviation" dur="0.2s" values="5;4;5" repeatCount="indefinite" />
     </feGaussianBlur>
     <!--beefs up the gaussian blur by copying it -->
     <feOffset in="blur" dx="0" result="blurXtraHue"   /> 
@@ -146,43 +146,59 @@
 <!-- STUFF DRAWN ON THE SCREEN -->
 <!-- G -->
 <g id="subG" stroke="orange" fill="orange"><use xlink:href="#subG-def"/></g>
-<g id="G" class="bulb" style="stroke:rgb(200,30,80);fill:rgb(200,30,80);" filter="url(#blur)">
-  <use xlink:href="#G-def"></use>
-</g>
+
 <!-- U -->
 <g id="subU" fill="orange"><use xlink:href="#subU-def"/></g>
-<g id="U" fill="rgb(200,30,80)"><use xlink:href="#U-def"/></g>
+
 <!-- L -->
 <g id="subL" stroke="orange"><use xlink:href="#subL-def"/></g>
-<g id="L" stroke="rgb(200,30,80)"><use xlink:href="#L-def"/></g>
+
 <!-- N -->
 <g id="subN1" stroke="orange"><use xlink:href="#subN1-def"/></g>
-<g id="N1" stroke="rgb(200,30,80)"><use xlink:href="#N1-def"/></g>
+
 <!-- O -->
 <g id="subO" stroke="orange"><use xlink:href="#subO-def"/></g>
-<g id="O" fill="rgb(200,30,80)"><use xlink:href="#O-def"/></g>
+
 <!-- E -->
 <g id="subE" stroke="orange"><use xlink:href="#subE-def"/></g>
-<g id="E" stroke="rgb(200,30,80)"><use xlink:href="#E-def"/></g>
+
 <!-- N -->
 <g id="subN" stroke="orange"><use xlink:href="#subN-def"/></g>
-<g id="N" stroke="rgb(200,30,80)"><use xlink:href="#N-def"/></g>
+
 <!-- E COPY -->
 <g id="subE1" stroke="orange">
   <use xlink:href="#subE" x="760" y="237"/>
   <use xlink:href="#subvert" x="895" y="0"/>
 </g>
-<g id="E1" stroke="rgb(200,30,80)">
-  <use xlink:href="#E" x="760" y="237"/>
-  <use xlink:href="#vert" x="895" y="0"/>
-</g>
+
 <!-- N COPY -->
 <g id="subN2" stroke="orange"><use xlink:href="#subN1-def" x="36" y="230"/></g>
-<g id="N2" stroke="rgb(200,30,80)"><use xlink:href="#N1-def" x="36" y="230"/></g>
+
 <!-- O COPY -->
 <g id="subO1" stroke="orange"><use xlink:href="#subO-def" x="-136" y="234"/></g>
-<g id="O1" fill="rgb(200,30,80)"><use xlink:href="#O-def" x="-136" y="234"/></g>
+
+
+<g id="neon">
+  <g id="G" class="bulb" style="stroke:rgb(200,30,80);fill:rgb(200,30,80);" filter="url(#blur)">
+    <use xlink:href="#G-def"></use></g>
+  <g id="U" fill="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#U-def"/></g>
+  <g id="L" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#L-def"/></g>
+  <g id="N1" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#N1-def"/></g>
+  <g id="O" fill="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#O-def"/></g>
+  <g id="E" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#E-def"/></g>
+  <g id="N" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#N-def"/></g>
+  <g id="E1" stroke="rgb(200,30,80)" filter="url(#blur)">
+    <use xlink:href="#E-def" x="760" y="237"/>
+    <use xlink:href="#vert" x="895" y="0"/>
+  </g>
+  <g id="N2" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#N1-def" x="36" y="230"/></g>
+  <g id="O1" fill="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#O-def" x="-136" y="234"/></g>
+</g>
+
+
 </svg>
+
+
 
 <!-- Navigation -->
 <nav class="menu slide-menu-left">

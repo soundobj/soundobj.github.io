@@ -41,7 +41,13 @@ function whichTransitionEvent(){
 
 /* Listen for a transition! */
 var transitionEvent = whichTransitionEvent();
-var e= document.getElementById('G');
-transitionEvent && e.addEventListener(transitionEvent, function() {
-	console.log('Transition complete!  This is the callback, no library needed!');
+$("#neon g").on(transitionEvent,function(e) {
+	var className = $(e.target).attr("class");
+	$(e.target).attr("class","");
+	var nextLetter = randomFlicker.getElement();
+	if(nextLetter.value === e.target.id){
+		nextLetter = randomFlicker.getDifferentElement(nextLetter.value);
+	}
+	console.log(`current letter ${e.target.id} new letter ${nextLetter.value}`);
+	$("#" + nextLetter.value).attr("class",className);
 });

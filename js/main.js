@@ -24,13 +24,9 @@ System.registerModule("es6/randomFlicker.js", [], function() {
         while (true)
           switch ($ctx.state) {
             case 0:
-              $ctx.state = (true) ? 5 : -2;
+              $ctx.state = (true) ? 1 : -2;
               break;
-            case 5:
-              console.log(this.elements[Math.floor(Math.random() * this.elements.length)]);
-              $ctx.state = 6;
-              break;
-            case 6:
+            case 1:
               $ctx.state = 2;
               return this.elements[Math.floor(Math.random() * this.elements.length)];
             case 2:
@@ -44,6 +40,20 @@ System.registerModule("es6/randomFlicker.js", [], function() {
     }),
     getElement: function() {
       return this.randomGenerator.next();
+    },
+    getDifferentElement: function(element) {
+      var elementIndex = this.elements.indexOf(element);
+      if (elementIndex == 0 || elementIndex == this.elements.length - 1) {
+        return {
+          value: this.elements[1],
+          done: false
+        };
+      } else {
+        return {
+          value: this.elements[--elementIndex],
+          done: false
+        };
+      }
     }
   }, {});
   return {get RandomFlicker() {
@@ -87,9 +97,15 @@ System.registerModule("es6/main.js", [], function() {
     }
   }
   var transitionEvent = whichTransitionEvent();
-  var e = document.getElementById('G');
-  transitionEvent && e.addEventListener(transitionEvent, function() {
-    console.log('Transition complete!  This is the callback, no library needed!');
+  $("#neon g").on(transitionEvent, function(e) {
+    var className = $(e.target).attr("class");
+    $(e.target).attr("class", "");
+    var nextLetter = randomFlicker.getElement();
+    if (nextLetter.value === e.target.id) {
+      nextLetter = randomFlicker.getDifferentElement(nextLetter.value);
+    }
+    console.log(("current letter " + e.target.id + " new letter " + nextLetter.value));
+    $("#" + nextLetter.value).attr("class", className);
   });
   return {};
 });

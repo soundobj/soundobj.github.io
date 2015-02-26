@@ -8,12 +8,21 @@ export class RandomFlicker {
 
 	*random() {
 		while (true) {
-			console.log(this.elements[Math.floor(Math.random()*this.elements.length)]);
 			yield this.elements[Math.floor(Math.random()*this.elements.length)];
 		}
 	}
 
 	getElement() {	
 		return this.randomGenerator.next();
+	}
+
+	//TODO write test for this function
+	getDifferentElement(element){
+		var elementIndex = this.elements.indexOf(element);
+		if(elementIndex == 0 || elementIndex == this.elements.length -1){
+			return {value:this.elements[1],done:false};
+		} else {
+			return {value:this.elements[--elementIndex],done:false};
+		}	
 	}
 }
