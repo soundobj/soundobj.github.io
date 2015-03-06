@@ -5,14 +5,73 @@ date:   2015-02-21 16:49:40
 categories: SVG
 ---
 
-I have been interested in SVG for a while; its capabilities for responsive design and interactivity are rather attractive. I've set myself the challenge to create a dynamic title for my blog site. I decided for a dynamic neon-like logo. I came up with something like this in Ilustrator:
+I have been interested in SVG for a while; its capabilities for responsive design and interactivity are rather attractive. I've set myself the challenge to create a dynamic title for my blog site. I decided for a neon-like logo. I came up with something like this in Illustrator:
 
 ![illustrator screen shoot]({{ "/img/ilustrator21022015.png" | prepend: site.baseurl }})
 
+## SVG Web OPtimisation
 
-### Illustrator graphic export
+### Illustrator Graphic Export 
 
+On Illustrator it is very easy to export a graphic as an SVG: On the main menu do `File > Save As` at the bottom you'll see a `Format` drop down chose `SVG`. You will be prompted with a SVG Options dialog as below:
 
-### Shape Reuse
+![SVG Options]({{ "/img/illustrator-svg-options.jpg" | prepend: site.baseurl }})
+
+* `SVG Profiles` is best to choose `SVG 1.1` as it is the standard recommended by the W3C.
+* `Decimal Places` the lower the value the smaller the file size; 3 is probably a good compromise.
+* Uncheck `Preserve Illustrator Editing Capabilities` as this add unnecessary information and dramatically increases the file size.
+* Check `Output fewer <tspan> elements` as it also reduces the file size of your SVG.
+
+#### Caveats:
+
+* When exporting from Illustrator; the colours you have used when designing your shapes will be harcoded inline within the SVG elements i.e. `stroke="#01B900"` and these cannot be overriden later when instantiating them as `<use>` or via CSS. I had to resolve to manually remove these inline attributes for flexibility. 
+
+* Illustrator does a good job exporting to SVG but depending on how you have organised your work with layers you might have some redundant `<g>` tags. It is worthy to inspect the generated markup and cleanup where necessary.
+
+### Strokes Vs Fills
+
+I have noticed that unnecessarily expanding strokes to fills can dramatically increase the file size: 
+
+#### Circle Expanded to Fill
+{% highlight xml %}
+<path stroke='none' d="M533.357,274.526v-0.011c-0.1-0.093-0.194-0.192-0.285-0.293c-0.063-0.04-0.131-0.075-0.194-0.116
+      c-0.267-0.13-0.516-0.28-0.742-0.454v0.01c-1.252-0.735-2.701-1.163-4.25-1.163c-4.687,0-8.5,3.854-8.5,8.593V425.8
+      c0,12.475-7.472,23.014-16.315,23.014h-86.369c-8.844,0-16.315-10.539-16.315-23.014V281.093c0-2.588-1.144-4.905-2.94-6.481
+      c-0.189-0.124-0.367-0.259-0.53-0.407c-0.289-0.16-0.562-0.338-0.799-0.551c-1.248-0.728-2.69-1.153-4.231-1.153
+      c-4.687,0-8.5,3.854-8.5,8.593V425.8c0,22.166,14.945,40.2,33.315,40.2h86.369c18.37,0,33.315-18.034,33.315-40.2V281.093
+      C536.386,278.46,535.207,276.103,533.357,274.526z"/>
+{% endhighlight %}
+
+#### Circle as Stroke
+{% highlight xml %}
+<path fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="10" d="M391.886,279.25v145.657
+    c0,8.387,3.415,16.43,9.493,22.36h0c7.208,7.032,16.983,10.983,27.177,10.983h58.441c11.134,0,21.812-4.315,29.686-11.997l0,0
+    c7.414-7.233,11.579-17.044,11.579-27.273V280.439"/>
+{% endhighlight %}
+
+When using strokes the file size was reduced from 659 to 290 bytes over a 50% reduction.
+
+## Shape Reuse
+{% highlight xml %}
+{% endhighlight %}
+If there is any duplication on our SVG graphic we can save a great deal of file size by declaring reusable components as `<defs>` and cloning them using the `<use>` tags:
+
+{% highlight xml %}
+<defs>
+  <g id="E-def">
+    <line fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="222.386" y1="220.917" x2="283.386" y2="220.917"/>
+    <line fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="223.386" y1="130.917" x2="272.386" y2="130.917"/>
+    <line fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="222.386" y1="39.917" x2="283.386" y2="39.917"/>
+  </g>
+</defs>
+<!-- Then you can clone the group and rearange on the screen -->
+<g id="E" stroke="rgb(200,30,80)"><use xlink:href="#E-def"/></g>
+<g id="E1" stroke="rgb(200,30,80)"><use xlink:href="#E-def" x="36" y="230"/></g>
+{% endhighlight %}
+
+By reusing elements I was able to save from 15kb to 7kb again an over 50% filesize reduce. 
+
+## SVG Styling 
+
 
 ### Filters
