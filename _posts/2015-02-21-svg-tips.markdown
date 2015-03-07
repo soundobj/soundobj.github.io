@@ -24,7 +24,7 @@ On Illustrator it is very easy to export a graphic as an SVG: On the main menu d
 
 #### Caveats:
 
-* When exporting from Illustrator; the colours you have used when designing your shapes will be harcoded inline within the SVG elements i.e. `stroke="#01B900"` and these cannot be overriden later when instantiating them as `<use>` or via CSS. I had to resolve to manually remove these inline attributes for flexibility. 
+* When exporting from Illustrator; the colours you have used when designing your shapes will be harcoded inline within the SVG elements i.e. `stroke="#01B900"` and these cannot be overridden later when instantiating the shapes as part of a `<use>` tag or targetting the shapes via CSS. I had to resolve to manually remove these inline attributes for flexibility. 
 
 * Illustrator does a good job exporting to SVG but depending on how you have organised your work with layers you might have some redundant `<g>` tags. It is worthy to inspect the generated markup and cleanup where necessary.
 
@@ -52,8 +52,7 @@ I have noticed that unnecessarily expanding strokes to fills can dramatically in
 When using strokes the file size was reduced from 659 to 290 bytes over a 50% reduction.
 
 ## Shape Reuse
-{% highlight xml %}
-{% endhighlight %}
+
 If there is any duplication on our SVG graphic we can save a great deal of file size by declaring reusable components as `<defs>` and cloning them using the `<use>` tags:
 
 {% highlight xml %}
@@ -69,9 +68,100 @@ If there is any duplication on our SVG graphic we can save a great deal of file 
 <g id="E1" stroke="rgb(200,30,80)"><use xlink:href="#E-def" x="36" y="230"/></g>
 {% endhighlight %}
 
-By reusing elements I was able to save from 15kb to 7kb again an over 50% filesize reduce. 
+By reusing elements I was able to save from 15kb to 7kb again an over 50% file size reduce. 
 
-## SVG Styling 
+## SVG Styling and Interaction
 
+One of the major caveats I find with SVG animation is the inability to reuse `<animate>` tags, these can only be declared as nested elements of the group or shape you desire to animate. Meaning that you have to explicity include them or perhaps use a library like [Snap.svg][Snap] to animate. You can use CSS animations and keyframes on some attributes thus all [presentation attributes][CSS attributes]. I wanted to create a simple flicker effect on the letters of my logo; this could be easily acheived using this CSS: 
+{% highlight css %}
+.bulb {
+  -webkit-animation-name: glow-blue;
+  -webkit-animation-duration: 0.1s;
+  -webkit-animation-iteration-count: 5;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-delay: 0.2s;
+  
+  animation-name: glow-blue;
+  animation-duration: 0.1s;
+  animation-iteration-count: 5;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  animation-delay: 0.2s;
+}
+
+@-webkit-keyframes glow-blue {
+  100% { stroke: hsl(255, 255, 255); }
+}
+
+@keyframes glow-blue {
+  100% { stroke: hsl(255, 255, 255); }
+}
+{% endhighlight %}
+
+I wanted the starting colour to be inherited from the SVG group attribute; for that I omitted the `0%{}` keyframe attribute. 
 
 ### Filters
+
+Unlike `<animate>` tags `<filter>` can be reused, I wanted to give the logo letters a glowing neon like effect; the Gaussian Filter came handy for that:
+
+{% highlight xml %}
+ <filter>
+    <feGaussianBlur in="SourceGraphic"  dx="0" stdDeviation="5" result="blur" />
+ </filter>     
+{% endhighlight %}
+
+But wait the applied SVG filter looks clipped or cropped! 
+
+![SVG Options]({{ "/img/clipped-blur.png" | prepend: site.baseurl }})
+
+The silent defaults for the filter region are: 
+`x="-10%" y="-10%" width="120%" height="120%"` thus large blurs usually get clipped. To mitigate this I resolved to increase the filter position and dimensions yielding the desired result:
+
+{% highlight xml %}
+ <filter x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur in="SourceGraphic"  dx="0" stdDeviation="5" result="blur" />
+ </filter>     
+{% endhighlight %}
+
+![SVG Options]({{ "/img/optimal-filter.png" | prepend: site.baseurl }})
+
+One really interesting feature about SVG filters is that you can stack them up so you can create complex effects. I soon realised that just one gaussian blur would not acheive my desired effect: see the first E on the below series:
+
+![SVG Options]({{ "/img/stacked-filters.png" | prepend: site.baseurl }})
+
+It looks very weak, I had to apply a couple more filters and then copy the original shape to come up with something of my liking:
+
+{% highlight xml %}
+  <filter id="blur" x="-40%" y="-40%" width="200%" height="200%">
+    <feGaussianBlur in="SourceGraphic"  dx="0" stdDeviation="5" result="blur"/>
+    <!--beefs up the gaussian blur by copying it -->
+    <feOffset in="blur" dx="0" result="blurXtraHue"   /> 
+    <!-- copies the original graphic so its not lost and we only see the blur-->
+    <feOffset in="SourceGraphic" dx="0" result="originalInput" />
+    <!--beefs up the gaussian blur by copying it -->
+    <feOffset in="blur" width="140%" dx="0" result="blurXtraHue1" />
+    <feMerge>        
+      <feMergeNode in="blur"/>   
+      <feMergeNode in="blurXtraHue"/>  
+      <feMergeNode in="blurXtraHue1"/>  
+      <feMergeNode in="originalInput"/>    
+    </feMerge>
+  </filter>
+{% endhighlight %}
+
+I also wanted to make the Gaussian blur throb, for that we could use an `<animate>` element:
+{% highlight xml %}
+  <feGaussianBlur in="SourceGraphic"  dx="0" stdDeviation="5" result="blur">
+    <animate attributeName="stdDeviation" dur="0.2s" values="5;4;5" repeatCount="indefinite" />
+  </feGaussianBlur>
+{% endhighlight %}
+
+I will cover up how to use javaScript to animate the logo in another post. Thanks for reading.
+
+
+[Snap]:http://snapsvg.io/
+[CSS attributes]:https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute#Presentation_attributes
+
+{% highlight xml %}
+{% endhighlight %}
