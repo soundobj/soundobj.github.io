@@ -1,157 +1,162 @@
 <header class="site-header">
-<div id="palettes"><p>12</p></div>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-   viewBox="0 0 1097.945 501.079" enable-background="new 0 0 1097.945 501.079" xml:space="preserve">
-<defs>
-  <filter id="blur" x="-40%" y="-40%" width="180%" height="180%">
-    <feGaussianBlur in="SourceGraphic"  dx="0" stdDeviation="5" result="blur">
-      <animate attributeName="stdDeviation" dur="0.2s" values="5;4;5" repeatCount="indefinite" />
-    </feGaussianBlur>
-    <!--beefs up the gaussian blur by copying it -->
-    <feOffset in="blur" dx="0" result="blurXtraHue"   /> 
-    <!-- copies the original graphic so its not lost and we only see the blur-->
-    <feOffset in="SourceGraphic" dx="0" result="originalInput" />
-    <!--beefs up the gaussian blur by copying it -->
-    <feOffset in="blur" width="140%" dx="0" result="blurXtraHue1" />
-    <feMerge>        
-      <feMergeNode in="blur"/>   
-      <feMergeNode in="blurXtraHue"/>  
-      <feMergeNode in="blurXtraHue1"/>  
-      <feMergeNode in="originalInput"/>    
-    </feMerge>
-  </filter>
-  <filter id="dropShadow" x="-40%" y="-40%" width="180%" height="180%">
-    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
-    <feOffset dx="2" dy="4" />
-    <feMerge>
-        <feMergeNode />
-        <feMergeNode in="SourceGraphic" />
-    </feMerge>
-  </filter>
-  <g id="subG-def">
-    <path fill="none" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" d="M916.432,373.021
-    c-4.699,48.077-45.235,85.646-94.545,85.646c-52.467,0-95-42.533-95-95s42.533-95,95-95c39.206,0,72.865,23.75,87.375,57.648"/>
-  <path fill="none" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" d="M916.886,363.667"/>
-    <line fill="none" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="825.386" y1="361.083" x2="911.386" y2="361.083"/>
-  </g>
-  <g id="G-def">
-      <path fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" d="M761.458,436.973
-    c-21.114-17.424-34.571-43.794-34.571-73.307c0-52.467,42.533-95,95-95c5.946,0,11.765,0.546,17.409,1.592"/>
-  <path fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" d="M914.32,385.691
-    c-9.934,41.847-47.548,72.976-92.434,72.976c-9.407,0-18.495-1.367-27.075-3.914"/>
-  <path fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" d="M916.886,363.667"/>
-  <path fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" d="M869.254,281.3
-    c14.133,8.145,25.974,19.824,34.314,33.829"/>
-    <line fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="839.386" y1="360.917" x2="898.386" y2="360.917"/>
-  </g>
-  <g id="subU-def">
-    <line fill="none" stroke="#B79F16" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="527.886" y1="268.5" x2="527.886" y2="431"/>
-    <line fill="none" stroke="#B79F16" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="391.886" y1="267.5" x2="391.886" y2="430"/>
-  </g>
-  <g id="U-def">
-    <path fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="10" d="M391.886,279.25v145.657
-    c0,8.387,3.415,16.43,9.493,22.36h0c7.208,7.032,16.983,10.983,27.177,10.983h58.441c11.134,0,21.812-4.315,29.686-11.997l0,0
-    c7.414-7.233,11.579-17.044,11.579-27.273V280.439"/>
-  </g>
-  <g id="subL-def">
-    <line id="subvert" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="52.72" y1="266.5" x2="52.72" y2="461.5"/>
-    <line fill="none" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="73.886" y1="458.083" x2="161.886" y2="458.083"/>
-  </g>
-  <g id="L-def">  
-    <line id="vert" fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="52.886" y1="280" x2="52.886" y2="448"/>
-    <line fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="87.386" y1="457.917" x2="148.386" y2="457.917"/>
-  </g>
-  <g id="subN1-def">
-      <line fill="none" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="661.328" y1="204.002" x2="661.328" y2="38.002"/>
-      <polyline fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="28" points="
-      658.958,231.708 527.886,55.473 527.886,233  "/>
-  </g>
-  <g id="N1-def">
-    <line fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="661.995" y1="190.105" x2="661.995" y2="52.105"/> 
-    <polyline fill="none" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="28" points="
-    650.958,219.708 527.886,51.473 527.886,220  "/>
-  </g>
-  <g id="subO-def">
-    <circle fill="none" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" cx="401.886" cy="127.667" r="95"/>
-  </g>
-  <g id="O-def">
-    <path fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" d="M342.457,201.973
-    c-21.113-17.424-34.571-43.794-34.571-73.307c0-52.467,42.533-95,95-95c5.946,0,11.765,0.546,17.409,1.592"/>
-  <path fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" d="M450.254,46.3
-    c28.469,16.407,47.632,47.149,47.632,82.367c0,52.467-42.533,95-95,95c-9.407,0-18.495-1.367-27.075-3.914"/>
-  </g>
-  <g id="subE-def">
-    <line fill="none" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="208.886" y1="221.083" x2="296.886" y2="221.083"/>
-    <line fill="none" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="209.386" y1="131.083" x2="286.386" y2="131.083"/>
-    <line fill="none" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="208.886" y1="40.083" x2="296.886" y2="40.083"/>
-  </g>
-  <g id="E-def">
-    <line fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="222.386" y1="220.917" x2="283.386" y2="220.917"/>
-    <line fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="223.386" y1="130.917" x2="272.386" y2="130.917"/>
-    <line fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="222.386" y1="39.917" x2="283.386" y2="39.917"/>
-  </g>
-  <g id="subN-def">
-    <line fill="none" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="52.886" y1="67" x2="52.886" y2="233"/>
-    <polyline fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="28" points="
-    55.257,39.294 186.328,215.528 186.328,38.002  "/>
-  </g>
-  <g id="N-def">
-    <line fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="53.22" y1="80.897" x2="53.22" y2="218.897"/>
-    <polyline fill="none" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="28" points="
-    64.257,51.294 187.328,219.528 187.328,51.002  "/>
-  </g>
-</defs>
-<!-- STUFF DRAWN ON THE SCREEN -->
-<g id="subG" stroke="orange" fill="orange"><use xlink:href="#subG-def"/></g>
-<g id="subU" fill="orange"><use xlink:href="#subU-def"/></g>
-<g id="subL" stroke="orange"><use xlink:href="#subL-def"/></g>
-<g id="subN1" stroke="orange"><use xlink:href="#subN1-def"/></g>
-<g id="subO" stroke="orange"><use xlink:href="#subO-def"/></g>
-<g id="subE" stroke="orange"><use xlink:href="#subE-def"/></g>
-<g id="subN" stroke="orange"><use xlink:href="#subN-def"/></g>
-<g id="subE1" stroke="orange">
-  <use xlink:href="#subE" x="760" y="237"/>
-  <use xlink:href="#subvert" x="895" y="0"/>
-</g>
-<g id="subN2" stroke="orange"><use xlink:href="#subN1-def" x="36" y="230"/></g>
-<g id="subO1" stroke="orange"><use xlink:href="#subO-def" x="-136" y="234"/></g>
-<g id="neon">
-  <g id="G" class="bulb" style="stroke:rgb(200,30,80)" filter="url(#blur)">
-    <use xlink:href="#G-def"></use></g>
-  <g id="U" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#U-def"/></g>
-  <g id="L" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#L-def"/></g>
-  <g id="N1" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#N1-def"/></g>
-  <g id="O" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#O-def"/></g>
-  <g id="E" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#E-def"/></g>
-  <g id="N" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#N-def"/></g>
-  <g id="E1" stroke="rgb(200,30,80)" filter="url(#blur)">
-    <use xlink:href="#E-def" x="760" y="237"/>
-    <use xlink:href="#vert" x="895" y="0"/>
-  </g>
-  <g id="N2" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#N1-def" x="36" y="230"/></g>
-  <g id="O1" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#O-def" x="-136" y="234"/></g>
-</g>
-</svg>
-
-<!-- Navigation -->
-<nav class="menu slide-menu-left">
+  <!-- Site Logo -->
+  <div class="logo">
+    <a href="/" title="navigate home">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         viewBox="0 0 1097.945 501.079" enable-background="new 0 0 1097.945 501.079" xml:space="preserve">
+        <defs>
+          <filter id="blur" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur in="SourceGraphic"  dx="0" stdDeviation="5" result="blur">
+              <animate attributeName="stdDeviation" dur="0.2s" values="5;4;5" repeatCount="indefinite" />
+            </feGaussianBlur>
+            <!--beefs up the gaussian blur by copying it -->
+            <feOffset in="blur" dx="0" result="blurXtraHue"   /> 
+            <!-- copies the original graphic so its not lost and we only see the blur-->
+            <feOffset in="SourceGraphic" dx="0" result="originalInput" />
+            <!--beefs up the gaussian blur by copying it -->
+            <feOffset in="blur" width="140%" dx="0" result="blurXtraHue1" />
+            <feMerge>        
+              <feMergeNode in="blur"/>   
+              <feMergeNode in="blurXtraHue"/>  
+              <feMergeNode in="blurXtraHue1"/>  
+              <feMergeNode in="originalInput"/>    
+            </feMerge>
+          </filter>
+          <filter id="dropShadow" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+            <feOffset dx="2" dy="4" />
+            <feMerge>
+                <feMergeNode />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          <g id="subG-def">
+            <path fill="none" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" d="M916.432,373.021
+            c-4.699,48.077-45.235,85.646-94.545,85.646c-52.467,0-95-42.533-95-95s42.533-95,95-95c39.206,0,72.865,23.75,87.375,57.648"/>
+          <path fill="none" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" d="M916.886,363.667"/>
+            <line fill="none" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="825.386" y1="361.083" x2="911.386" y2="361.083"/>
+          </g>
+          <g id="G-def">
+              <path fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" d="M761.458,436.973
+            c-21.114-17.424-34.571-43.794-34.571-73.307c0-52.467,42.533-95,95-95c5.946,0,11.765,0.546,17.409,1.592"/>
+          <path fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" d="M914.32,385.691
+            c-9.934,41.847-47.548,72.976-92.434,72.976c-9.407,0-18.495-1.367-27.075-3.914"/>
+          <path fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" d="M916.886,363.667"/>
+          <path fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" d="M869.254,281.3
+            c14.133,8.145,25.974,19.824,34.314,33.829"/>
+            <line fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="839.386" y1="360.917" x2="898.386" y2="360.917"/>
+          </g>
+          <g id="subU-def">
+            <line fill="none" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="527.886" y1="268.5" x2="527.886" y2="431"/>
+            <line fill="none" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="391.886" y1="267.5" x2="391.886" y2="430"/>
+          </g>
+          <g id="U-def">
+            <path fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="10" d="M391.886,279.25v145.657
+            c0,8.387,3.415,16.43,9.493,22.36h0c7.208,7.032,16.983,10.983,27.177,10.983h58.441c11.134,0,21.812-4.315,29.686-11.997l0,0
+            c7.414-7.233,11.579-17.044,11.579-27.273V280.439"/>
+          </g>
+          <g id="subL-def">
+            <line id="subvert" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="52.72" y1="266.5" x2="52.72" y2="461.5"/>
+            <line fill="none" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="73.886" y1="458.083" x2="161.886" y2="458.083"/>
+          </g>
+          <g id="L-def">  
+            <line id="vert" fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="52.886" y1="280" x2="52.886" y2="448"/>
+            <line fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="87.386" y1="457.917" x2="148.386" y2="457.917"/>
+          </g>
+          <g id="subN1-def">
+              <line fill="none" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="661.328" y1="204.002" x2="661.328" y2="38.002"/>
+              <polyline fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="28" points="
+              658.958,231.708 527.886,55.473 527.886,233  "/>
+          </g>
+          <g id="N1-def">
+            <line fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="661.995" y1="190.105" x2="661.995" y2="52.105"/> 
+            <polyline fill="none" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="28" points="
+            650.958,219.708 527.886,51.473 527.886,220  "/>
+          </g>
+          <g id="subO-def">
+            <circle fill="none" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" cx="401.886" cy="127.667" r="95"/>
+          </g>
+          <g id="O-def">
+            <path fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" d="M342.457,201.973
+            c-21.113-17.424-34.571-43.794-34.571-73.307c0-52.467,42.533-95,95-95c5.946,0,11.765,0.546,17.409,1.592"/>
+          <path fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" d="M450.254,46.3
+            c28.469,16.407,47.632,47.149,47.632,82.367c0,52.467-42.533,95-95,95c-9.407,0-18.495-1.367-27.075-3.914"/>
+          </g>
+          <g id="subE-def">
+            <line fill="none" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="208.886" y1="221.083" x2="296.886" y2="221.083"/>
+            <line fill="none" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="209.386" y1="131.083" x2="286.386" y2="131.083"/>
+            <line fill="none" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="208.886" y1="40.083" x2="296.886" y2="40.083"/>
+          </g>
+          <g id="E-def">
+            <line fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="222.386" y1="220.917" x2="283.386" y2="220.917"/>
+            <line fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="223.386" y1="130.917" x2="272.386" y2="130.917"/>
+            <line fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="222.386" y1="39.917" x2="283.386" y2="39.917"/>
+          </g>
+          <g id="subN-def">
+            <line fill="none" stroke-width="11" stroke-linecap="round" stroke-miterlimit="28" x1="52.886" y1="67" x2="52.886" y2="233"/>
+            <polyline fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="28" points="
+            55.257,39.294 186.328,215.528 186.328,38.002  "/>
+          </g>
+          <g id="N-def">
+            <line fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="28" x1="53.22" y1="80.897" x2="53.22" y2="218.897"/>
+            <polyline fill="none" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="28" points="
+            64.257,51.294 187.328,219.528 187.328,51.002  "/>
+          </g>
+        </defs>
+        <g class="sub-logo">
+          <g id="subG"><use xlink:href="#subG-def"/></g>
+          <g id="subU"><use xlink:href="#subU-def"/></g>
+          <g id="subL"><use xlink:href="#subL-def"/></g>
+          <g id="subN1"><use xlink:href="#subN1-def"/></g>
+          <g id="subO"><use xlink:href="#subO-def"/></g>
+          <g id="subE"><use xlink:href="#subE-def"/></g>
+          <g id="subN"><use xlink:href="#subN-def"/></g>
+          <g id="subE1">
+            <use xlink:href="#subE" x="760" y="237"/>
+            <use xlink:href="#subvert" x="895" y="0"/>
+          </g>
+          <g id="subN2"><use xlink:href="#subN1-def" x="36" y="230"/></g>
+          <g id="subO1"><use xlink:href="#subO-def" x="-136" y="234"/></g>
+        </g>
+        <g id="neon">
+          <g id="G" class="bulb" style="stroke:rgb(200,30,80)" filter="url(#blur)">
+            <use xlink:href="#G-def"></use></g>
+          <g id="U" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#U-def"/></g>
+          <g id="L" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#L-def"/></g>
+          <g id="N1" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#N1-def"/></g>
+          <g id="O" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#O-def"/></g>
+          <g id="E" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#E-def"/></g>
+          <g id="N" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#N-def"/></g>
+          <g id="E1" stroke="rgb(200,30,80)" filter="url(#blur)">
+            <use xlink:href="#E-def" x="760" y="237"/>
+            <use xlink:href="#vert" x="895" y="0"/>
+          </g>
+          <g id="N2" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#N1-def" x="36" y="230"/></g>
+          <g id="O1" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#O-def" x="-136" y="234"/></g>
+        </g>
+      </svg>
+    </a>
+  </div>
+  <!-- Navigation -->
+  <nav class="menu slide-menu-left">
     <ul>
-        {% for page in site.pages %}
-          {% if page.title %}
+      {% for page in site.pages %}
+        {% if page.title %}
           <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-          {% endif %}
-        {% endfor %}
+        {% endif %}
+      {% endfor %}
     </ul>
-</nav>
-<!-- Navigation Icon -->
-<div class="menu-button">
-   <a href="#" class="menu-icon" title="Open site navigation">
-    <svg viewBox="0 0 18 15">
-      <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
-      <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
-      <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
-    </svg>
-  </a> 
-</div>
-<div  id="wrapper" class="wrapper" />   
+  </nav>
+  <!-- Navigation Icon -->
+  <div class="menu-button">
+     <a href="#" class="menu-icon" title="Open site navigation">
+      <svg viewBox="-1 -2 18 15">
+        <g id="settings-icon" class="settings-icon-closed">
+          <line x1="0" y1="0" x2="16" y2="0"/>
+          <line x1="0" y1="4" x2="16" y2="4"/>
+          <line x1="0" y1="8" x2="16" y2="8"/>
+        </g>
+      </svg>
+    </a> 
+  </div> 
 </header>

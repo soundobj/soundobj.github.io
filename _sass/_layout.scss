@@ -2,9 +2,10 @@
  * Site header
  */
 .site-header {
-    border-top: 5px solid $grey-color-dark;
-    border-bottom: 1px solid $grey-color-light;
-    min-height: 56px;
+    border-top: 4px solid $yellow-color;
+    border-bottom: 4px solid $green-color;
+    min-height: 170px;
+    background-color: black;
 
     // Positioning context for the mobile navigation icon
     position: relative;
@@ -21,6 +22,23 @@
     &:visited {
         color: $grey-color-dark;
     }
+}
+
+.logo {
+    width: 380px;
+    float: right;
+}
+
+.settings-icon-closed {
+    stroke: $blue-color;
+}
+
+.settings-icon-open {
+    stroke: white;
+}
+
+.settings-icon-open, .settings-icon-closed {
+    stroke-width:2px;  
 }
 
 .site-nav {

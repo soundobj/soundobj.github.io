@@ -15,6 +15,7 @@
 		$("body").addClass("sml-open");		
 		document.body.appendChild(mask);
 		activeNav = "sml-open";
+		$("#settings-icon").toggleClass("settings-icon-closed settings-icon-open");
 	} );
 
 	/* hide active menu if mask is clicked */

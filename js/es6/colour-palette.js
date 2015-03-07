@@ -43,9 +43,8 @@ export class ColourPalette {
 	}
 }
 
-//var colourPalette = new ColourPalette();
-
 var steps = 6;
 var freq = 2*Math.PI/steps;
 var repeatCycles = ColourPalette.rgbColourSequence(freq,freq,freq,0,2,4,128,127,steps);
-ColourPalette.sampleColours(repeatCycles,"#palettes");
+// <div id="palettes"></div>
+// ColourPalette.sampleColours(repeatCycles,"#palettes");
