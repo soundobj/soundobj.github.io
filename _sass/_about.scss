@@ -1,0 +1,41 @@
+.text-background {
+	position: absolute;
+	color: white;
+	background-color: black;
+	padding: 10px;
+}
+
+.blurb {
+	@extend .text-background;
+	width: 350px;
+	top: -20px;
+	left: -40px;
+}
+
+.blurb-work {
+	@extend .blurb;
+	top: 310px;
+	width: 350px;
+}
+
+.blurb-hobbies {
+	@extend .text-background;
+	border-radius: 50%;
+	width: 155px;
+	height: 155px;
+	top: -80px;
+	left: 620px;
+	text-align: center;
+	border: solid black 7px;
+}
+
+.blurb-interests {
+	@extend .blurb;
+	width: 650px;
+	top: 467px;
+}
+
+.container {
+	min-width: 740px;
+	position:relative;
+}
