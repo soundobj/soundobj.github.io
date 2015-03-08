@@ -1,41 +1,43 @@
-.text-background {
-	position: absolute;
-	color: white;
-	background-color: black;
-	padding: 10px;
-}
+@media screen and (min-width: 850px) {
+	.container {
+		// min-width: 740px;
+		position:relative;
+	}
 
-.blurb {
-	@extend .text-background;
-	width: 350px;
-	top: -20px;
-	left: -40px;
-}
+	.text-background {
+		position: absolute;
+		color: white;
+		background-color: black;
+		padding: 10px;
+	}
 
-.blurb-work {
-	@extend .blurb;
-	top: 310px;
-	width: 350px;
-}
+	.blurb {
+		@extend .text-background;
+		width: 350px;
+		top: -20px;
+		left: -40px;
+	}
 
-.blurb-hobbies {
-	@extend .text-background;
-	border-radius: 50%;
-	width: 155px;
-	height: 155px;
-	top: -80px;
-	left: 620px;
-	text-align: center;
-	border: solid black 7px;
-}
+	.blurb-work {
+		@extend .blurb;
+		top: 310px;
+		width: 350px;
+	}
 
-.blurb-interests {
-	@extend .blurb;
-	width: 650px;
-	top: 467px;
-}
+	.blurb-hobbies {
+		@extend .text-background;
+		border-radius: 50%;
+		width: 155px;
+		height: 155px;
+		top: -80px;
+		left: 620px;
+		text-align: center;
+		border: solid black 7px;
+	}
 
-.container {
-	min-width: 740px;
-	position:relative;
+	.blurb-interests {
+		@extend .blurb;
+		width: 650px;
+		top: 467px;
+	}
 }
