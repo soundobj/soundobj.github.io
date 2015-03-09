@@ -10,11 +10,9 @@
 
 	$(".menu-icon").click(function(){
 		if($(".mask").length) {
-			console.log("got to close");
 			hideMenu();
 			$("#settings-icon").attr("class","settings-icon-closed");
 		} else {
-			console.log("got to open");
 			$("body").addClass("sml-open");		
 			document.body.appendChild(mask);
 			activeNav = "sml-open";

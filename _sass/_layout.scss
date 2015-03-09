@@ -24,9 +24,17 @@
     }
 }
 
+
 .logo {
-    width: 380px;
+    position: relative;
     float: right;
+    width: 380px;
+    // @media screen and (min-width: 450px) {
+    //     width: 380px;
+    // }
+    // @media screen and (max-width: 450px) {
+    //     width: 180px;
+    // }
 }
 
 .settings-icon-closed {
