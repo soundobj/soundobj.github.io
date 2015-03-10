@@ -33,9 +33,10 @@ body {
     width: 48px;
     margin-top: 5px;
     margin-left: 5px;
-    position: absolute;
-    left: 0px;
-    top: 0px;
+    vertical-align: top;
+    // position: absolute;
+    // left: 0px;
+    // top: 0px;
     z-index: 25;
 }
 
@@ -79,7 +80,7 @@ nav.menu a {
 /* slide menu left and right, push menu left and right */
 nav.slide-menu-left {
     top: 0;
-    width: 22%;
+    width: 30%;
     height: 100%;
 }
 
