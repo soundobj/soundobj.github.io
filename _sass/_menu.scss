@@ -7,6 +7,10 @@ body {
     overflow-x: hidden
 }
 
+.navigation-links li:first-child {
+    margin-top: 20px;
+}
+
 #wrapper {
     position: relative;
     z-index: 10;
@@ -81,6 +85,7 @@ nav.menu a {
 nav.slide-menu-left {
     top: 0;
     width: 30%;
+    @include respond-to(handhelds) { width: 60%;}
     height: 100%;
 }
 
@@ -106,5 +111,5 @@ nav.slide-menu-left a {
 }
 
 nav.slide-menu-left {
-    left: -30%
+    left: -60%;
 }

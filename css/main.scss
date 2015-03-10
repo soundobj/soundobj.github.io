@@ -21,6 +21,7 @@ $grey-color-dark:  darken($grey-color, 25%);
 
 $on-palm:          600px;
 $on-laptop:        800px;
+$on-mobile:		   450px;
 
 $yellow-color: rgb(255,183,10);
 $blue-color: rgb(25,110,238);
@@ -38,6 +39,18 @@ $green-color: rgb(6,162,95);
     @media screen and (max-width: $device) {
         @content;
     }
+}
+
+@mixin respond-to($media) {
+  @if $media == handhelds {
+    @media only screen and (max-width: 479px) { @content; }
+  }
+  @else if $media == wide-handhelds {
+    @media only screen and (min-width: 480px) and (max-width: 767px) { @content; }
+  }
+  @else if $media == tablets {
+    @media only screen and (min-width: 768px) and (max-width: 959px) { @content; }
+  }
 }
 
 // Import partials from `sass_dir` (defaults to `_sass`)
