@@ -7,10 +7,6 @@ body {
     overflow-x: hidden
 }
 
-.navigation-links li:first-child {
-    margin-top: 20px;
-}
-
 #wrapper {
     position: relative;
     z-index: 10;
@@ -90,9 +86,19 @@ nav.slide-menu-left {
     height: 100%;
 }
 
+.navigation-links li:first-child {
+    margin-top: 20px;
+    padding: 10px;
+    font-weight: 900;
+}
+
+.post {
+    margin-left: 20px;
+}
+
 nav.slide-menu-left li {
     display: block;
-    text-align: center;
+    text-align: left;
     border-bottom: solid 1px #3184a1;
     border-top: solid 1px #b5dbe9;
 }
