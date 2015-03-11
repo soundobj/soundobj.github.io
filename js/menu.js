@@ -23,7 +23,8 @@
 	function hideMenu(){
 		$("body").removeClass(activeNav);
 		activeNav = "";
-		document.body.removeChild(mask);		
+		document.body.removeChild(mask);	
+		$("#settings-icon").attr("class","settings-icon-closed");	
 	}
 
 	/* hide active menu if mask is clicked */
