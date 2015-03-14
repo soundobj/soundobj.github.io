@@ -98,6 +98,7 @@ System.registerModule("es6/main.js", [], function() {
   }
   var transitionEvent = whichTransitionEvent();
   $("#neon g").on(transitionEvent, function(e) {
+    console.log("finished animaation");
     var className = $(e.target).attr("class");
     $(e.target).attr("class", "");
     var nextLetter = randomFlicker.getElement();

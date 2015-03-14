@@ -2,18 +2,17 @@ import {Neon} from '../es6/neon'
 var assert = require('assert');
 require('./sinon-cleanup');
 
-describe('something', () => {
+describe('neon scenarios', () => {
 
-  it('that should work', () => {
-    assert.equal(new Neon().sayHi(), 'Hi neon 7 Anonymous!');
-  });
-
-  it('should have called', function() {
+  it('should reset the generator', () => {
     let neon = new Neon();
-    let stub = this.sinon.stub(neon, 'value');
-    stub.returns(42);
-
-    assert.equal(neon.value(), 42);
+    let colours = new Array();
+    for (var i = 0; i < 8; i++){
+    	colours.push(neon.getNextColour());
+    }
+    // console.log(colours);
+    assert.equal(colours.length,8);
+    assert(colours[colours.length -1] != undefined);
   });
-  
+
 });

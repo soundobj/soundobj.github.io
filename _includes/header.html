@@ -5,9 +5,10 @@
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          viewBox="0 0 1097.945 501.079" xml:space="preserve">
         <defs>
+
           <filter id="blur" x="-40%" y="-40%" width="180%" height="180%">
             <feGaussianBlur in="SourceGraphic"  dx="0" stdDeviation="5" result="blur">
-              <!-- <animate attributeName="stdDeviation" dur="0.2s" values="5;4;5" repeatCount="indefinite" /> -->
+              <animate attributeName="stdDeviation" dur="0.2s" values="5;12;5" repeatCount="3" />
             </feGaussianBlur>
             <!--beefs up the gaussian blur by copying it -->
             <feOffset in="blur" dx="0" result="blurXtraHue"   /> 
@@ -119,7 +120,7 @@
           <g id="subO1"><use xlink:href="#subO-def" x="-136" y="234"/></g>
         </g>
         <g id="neon">
-          <g id="G" class="bulb" style="stroke:rgb(200,30,80)" filter="url(#blur)">
+          <g id="G" class="delay" style="stroke:rgb(200,30,80)" filter="url(#blur)">
             <use xlink:href="#G-def"></use></g>
           <g id="U" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#U-def"/></g>
           <g id="L" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#L-def"/></g>
