@@ -4,6 +4,10 @@ export class Neon {
 	constructor() {	
 		this.colourIterator = this.colours();
 		this.letterSequenceIterator = this.letterSequence(); 
+		this.sequenceLength = 6;
+		this.sequenceCounter = 0;
+		this.flickerEvent = this.getRandomInt(3,this.sequenceLength);
+		this.colour = this.getNextColour();
 	}
 
 	*colours() {
@@ -49,10 +53,40 @@ export class Neon {
 		// reset the iterator if arrived to the last element
 		if(letterSequence.done) {
 			this.letterSequenceIterator = this.colours();
-			// letterSequence = this.letterSequenceIterator.next();
 		}
 		return letterSequence;
 	}
 
+	animate(){	
+		let instructions = {};
 
+		// update the sequenceCounter
+		this.sequenceCounter++;
+		console.log(`counter is ${this.sequenceCounter}`);
+		let sequence = this.getNextLetterSquence();
+
+		// if we have finished a letter sequence then yield a new colour
+		if (sequence.value == undefined) {
+			this.colour = this.getNextColour();
+			// reset the sequence counter
+			this.sequenceCounter = 0;
+		}
+
+		// if its time to flicker a random letter then specify it an generate a new
+		// random interval
+		if (this.sequenceCounter == this.flickerEvent){
+			instructions["flicker"] = true;
+			this.flickerEvent = this.getRandomInt(3,this.sequenceLength);
+			console.log(`doing a new flicker event ${this.flickerEvent}`);
+		}
+
+		instructions["colour"] = this.colour.value;
+		instructions["letterSequence"] = sequence.value;
+
+		return instructions;
+	}
+
+	getRandomInt(min, max) {
+    	return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
 }
