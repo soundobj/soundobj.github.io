@@ -62,7 +62,7 @@ export class Neon {
 
 		// update the sequenceCounter
 		this.sequenceCounter++;
-		console.log(`counter is ${this.sequenceCounter}`);
+		//console.log(`counter is ${this.sequenceCounter}`);
 		let sequence = this.getNextLetterSquence();
 
 		// if we have finished a letter sequence then yield a new colour
@@ -72,7 +72,7 @@ export class Neon {
 			this.sequenceCounter = 0;
 		}
 
-		// if its time to flicker a random letter then specify it an generate a new
+		// if its time to flicker a random letter, then specify it an generate a new
 		// random interval
 		if (this.sequenceCounter == this.flickerEvent){
 			instructions["flicker"] = true;
