@@ -41,23 +41,36 @@ function whichTransitionEvent(){
     }
 }
 
-// var transitionEvent = whichTransitionEvent();
-// $("#neon g").on(transitionEvent,function(e) {
-// 	console.log("finished animaation");
-// 	var className = $(e.target).attr("class");
-// 	$(e.target).attr("class","");
-// 	var nextLetter = randomFlicker.getElement();
-// 	if(nextLetter.value === e.target.id){
-// 		nextLetter = randomFlicker.getDifferentElement(nextLetter.value);
-// 	}
-// 	console.log(`current letter ${e.target.id} new letter ${nextLetter.value}`);
-// 	$("#" + nextLetter.value).attr("class",className);
-// });
-
-
 /* Listen for a transition! */
-var transitionEvent = whichTransitionEvent();
+let transitionEvent = whichTransitionEvent();
 $("#neon g").on(transitionEvent,function(e) {
-	console.log("finished");
+	$("#neon g").attr("class","");	
+	let animate = neon.animate();
 
+	console.log(animate);
+	console.log($("#neon g").attr("class"));
+	
+	// change the colours of the letters in the sequence
+	if(animate.letterSequence){
+		let currentElement;
+	 	for (let elem of animate.letterSequence.values()) {
+	        console.log(`just, elem ${elem}`);
+	        $("#" + elem).attr("stroke",animate.colour);
+	        currentElement = elem;
+	    }
+
+	    if(animate.flicker){
+	    	$("#" + currentElement).attr("class","bulb");
+	    } else {
+	    	$("#" + currentElement).attr("class","delay");
+	    }
+		
+	} else {
+		var nextLetter = randomFlicker.getElement();
+		if(nextLetter.value === e.target.id){
+			nextLetter = randomFlicker.getDifferentElement(nextLetter.value);
+		}
+		console.log(`current letter ${e.target.id} new letter ${nextLetter.value}`);
+		$("#" + nextLetter.value).attr("class","bulb");
+	}
 });

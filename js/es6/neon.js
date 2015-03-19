@@ -3,10 +3,10 @@ export class Neon {
 
 	constructor() {	
 		this.colourIterator = this.colours();
-		this.letterSequenceIterator = this.letterSequence(); 
-		this.sequenceLength = 6;
+		this.letterSequenceIterator = this.letterSequence(); 		
 		this.sequenceCounter = 0;
-		this.flickerEvent = this.getRandomInt(3,this.sequenceLength);
+		this.flickerInterval = 6;
+		this.flickerEvent = this.getRandomInt(3,this.flickerInterval);
 		this.colour = this.getNextColour();
 	}
 
@@ -40,19 +40,24 @@ export class Neon {
 		yield ['L'];
 		yield undefined; // denotes a sequence completion
 		// snake zig zag
-		yield ['N','L'];
-		yield ['O1','E'];
-		yield ['O','U'];
-		yield ['N1','N2'];
+		yield ['N'];
+		yield ['L'];
+		yield ['O1'];
+		yield ['E'];
+		yield ['O'];
+		yield ['U'];
+		yield ['N1'];
+		yield ['N2'];
 		yield ['G'];
 		yield ['E1'];
+		yield undefined; // denotes a sequence completion
 	}
 
 	getNextLetterSquence() {
 		let letterSequence = this.letterSequenceIterator.next();
 		// reset the iterator if arrived to the last element
 		if(letterSequence.done) {
-			this.letterSequenceIterator = this.colours();
+			this.letterSequenceIterator = this.letterSequence();
 		}
 		return letterSequence;
 	}
@@ -62,21 +67,21 @@ export class Neon {
 
 		// update the sequenceCounter
 		this.sequenceCounter++;
-		//console.log(`counter is ${this.sequenceCounter}`);
 		let sequence = this.getNextLetterSquence();
 
 		// if we have finished a letter sequence then yield a new colour
-		if (sequence.value == undefined) {
+		if (!sequence.value) {
+			console.log("getting next colour value new");
 			this.colour = this.getNextColour();
-			// reset the sequence counter
-			this.sequenceCounter = 0;
+			sequence = this.getNextLetterSquence();			
+			this.sequenceCounter = 0; // reset the sequence counter
 		}
 
 		// if its time to flicker a random letter, then specify it an generate a new
 		// random interval
 		if (this.sequenceCounter == this.flickerEvent){
 			instructions["flicker"] = true;
-			this.flickerEvent = this.getRandomInt(3,this.sequenceLength);
+			this.flickerEvent = this.getRandomInt(3,this.flickerInterval);
 			console.log(`doing a new flicker event ${this.flickerEvent}`);
 		}
 

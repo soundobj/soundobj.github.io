@@ -12,6 +12,8 @@
 
 $duration: 1s;
 
+$duration-glow: 1s;
+
 .delay {
   animation-delay: $duration;
   animation-name: glow-two;
@@ -43,9 +45,28 @@ $duration: 1s;
   animation-name: glow-blue;
   animation-duration: 0.2s;
   animation-iteration-count: 4;
+
+  -moz-animation-name: glow-blue;
+  -moz-animation-duration: 0.2s;
+  -moz-animation-iteration-count: 4;
+
+  -webkit-animation-name: glow-blue;
+  -webkit-animation-duration: 0.2s;
+  -webkit-animation-iteration-count: 4;
+
 }
 
 @keyframes glow-blue {
+  from {stroke: black;}
+  to { stroke: hsl(255, 255, 255); }
+}
+
+@-webkit-keyframes glow-blue {
+  from {stroke: black;}
+  to { stroke: hsl(255, 255, 255); }
+}
+
+@-moz-keyframes glow-blue {
   from {stroke: black;}
   to { stroke: hsl(255, 255, 255); }
 }
