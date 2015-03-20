@@ -10,7 +10,60 @@ System.registerModule("es6/neon.js", [], function() {
     this.colour = this.getNextColour();
   };
   ($traceurRuntime.createClass)(Neon, {
-    colours: $traceurRuntime.initGeneratorFunction(function $__1() {
+    iterator: $traceurRuntime.initGeneratorFunction(function $__3(elements) {
+      var $__1,
+          $__2,
+          value;
+      return $traceurRuntime.createGeneratorInstance(function($ctx) {
+        while (true)
+          switch ($ctx.state) {
+            case 0:
+              $__1 = elements.values()[$traceurRuntime.toProperty(Symbol.iterator)](), $__2 = void 0;
+              $ctx.state = 4;
+              break;
+            case 4:
+              $ctx.state = (!($__2 = $__1.next()).done) ? 5 : -2;
+              break;
+            case 5:
+              value = $__2.value;
+              $ctx.state = 6;
+              break;
+            case 6:
+              $ctx.state = 2;
+              return value;
+            case 2:
+              $ctx.maybeThrow();
+              $ctx.state = 4;
+              break;
+            default:
+              return $ctx.end();
+          }
+      }, $__3, this);
+    }),
+    getLongestWord: function(firstWord, lastWord) {
+      return (firstWord.length > lastWord.length) ? firstWord : lastWord;
+    },
+    firstWordForwardsLastWordBackwards: function(firstWord, lastWord) {
+      var longestWord = this.getLongestWord(firstWord, lastWord);
+      lastWord = lastWord.reverse();
+      var sequence = new Array();
+      for (var $__1 = longestWord.keys()[$traceurRuntime.toProperty(Symbol.iterator)](),
+          $__2 = void 0; !($__2 = $__1.next()).done; ) {
+        var i = $__2.value;
+        {
+          var sequenceLetters = new Array();
+          if (firstWord[i]) {
+            sequenceLetters.push(firstWord[i]);
+          }
+          if (lastWord[i]) {
+            sequenceLetters.push(lastWord[i]);
+          }
+          sequence.push(sequenceLetters);
+        }
+      }
+      return sequence;
+    },
+    colours: $traceurRuntime.initGeneratorFunction(function $__4() {
       return $traceurRuntime.createGeneratorInstance(function($ctx) {
         while (true)
           switch ($ctx.state) {
@@ -45,7 +98,7 @@ System.registerModule("es6/neon.js", [], function() {
             default:
               return $ctx.end();
           }
-      }, $__1, this);
+      }, $__4, this);
     }),
     getNextColour: function() {
       var colour = this.colourIterator.next();
@@ -55,7 +108,7 @@ System.registerModule("es6/neon.js", [], function() {
       }
       return colour;
     },
-    letterSequence: $traceurRuntime.initGeneratorFunction(function $__2() {
+    letterSequence: $traceurRuntime.initGeneratorFunction(function $__5() {
       return $traceurRuntime.createGeneratorInstance(function($ctx) {
         while (true)
           switch ($ctx.state) {
@@ -188,7 +241,7 @@ System.registerModule("es6/neon.js", [], function() {
             default:
               return $ctx.end();
           }
-      }, $__2, this);
+      }, $__5, this);
     }),
     getNextLetterSquence: function() {
       var letterSequence = this.letterSequenceIterator.next();

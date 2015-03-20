@@ -25,7 +25,7 @@ function whichTransitionEvent(){
 	  "msAnimation"     : "MSAnimationIteration",
 	  "animation"       : "animationiteration"
 	};
-
+	
 	var animEndEventNames = {
 	  "WebkitAnimation" : "webkitAnimationEnd",
 	  "MozAnimation"    : "animationend",

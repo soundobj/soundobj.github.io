@@ -10,6 +10,37 @@ export class Neon {
 		this.colour = this.getNextColour();
 	}
 
+	*iterator(elements) {
+		for(let value of elements.values()){
+			yield value;
+		}
+	}
+
+	getLongestWord(firstWord,lastWord){
+		return (firstWord.length > lastWord.length) ? firstWord : lastWord;
+	}
+
+	firstWordForwardsLastWordBackwards(firstWord,lastWord){
+		//check the longest word out of the two
+		let longestWord = this.getLongestWord(firstWord,lastWord);
+		
+		lastWord = lastWord.reverse();
+		let sequence = new Array();
+		for(let i of longestWord.keys()){
+			let sequenceLetters = new Array();
+			if(firstWord[i]){
+				sequenceLetters.push(firstWord[i]);
+			}
+			if(lastWord[i]){
+				sequenceLetters.push(lastWord[i]);
+			}
+			sequence.push(sequenceLetters);
+		}
+		return sequence;
+	}
+
+	// old working code
+
 	*colours() {
 		yield 'rgb(255,183,10)';
 		yield 'rgb(25,110,238)';
@@ -24,7 +55,7 @@ export class Neon {
 			this.colourIterator = this.colours();
 			// skip the undefined value
 			colour = this.colourIterator.next();
-		}
+		}			
 		return colour;
 	}
 
