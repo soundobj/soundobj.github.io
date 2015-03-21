@@ -2,12 +2,54 @@
 export class Neon {
 
 	constructor() {	
+		console.log("enter new neon");
 		this.colourIterator = this.colours();
 		this.letterSequenceIterator = this.letterSequence(); 		
 		this.sequenceCounter = 0;
 		this.flickerInterval = 6;
 		this.flickerEvent = this.getRandomInt(3,this.flickerInterval);
 		this.colour = this.getNextColour();
+
+		this.sequencers;
+		this.sequencer;
+		this.iterableSequencers = new Array();
+		this.rows;
+	}
+
+	setup(rows){
+		this.rows = rows;
+		this.addSequencer(this.firstRowForwardsLastRowBackwards);
+		this.addSequencer(this.shuffle);
+		this.initSequencers();
+		this.initSequencer();
+	}
+
+	addSequencer(callback){		
+		this.iterableSequencers.push(callback);
+	}
+
+	initSequencer(){
+		let sequencer = this.sequencers.next();
+		if (sequencer.done){
+			console.log('restart initSequencer');
+			this.initSequencers();
+			sequencer = this.sequencers.next();
+		}
+		this.sequencer = this.iterator(sequencer.value(this.rows));
+	}
+
+	initSequencers(sequencers){
+		this.sequencers = this.iterator(this.iterableSequencers);
+	}
+
+	animateSequences(){
+		let sequence = this.sequencer.next();
+		if (sequence.done){
+			this.initSequencer();
+			sequence = this.sequencer.next();
+			sequence.startSequence = true;
+		}
+		return sequence;		 
 	}
 
 	*iterator(elements) {
@@ -16,27 +58,49 @@ export class Neon {
 		}
 	}
 
-	getLongestWord(firstWord,lastWord){
-		return (firstWord.length > lastWord.length) ? firstWord : lastWord;
+	getLongestRow(rows){
+		return (rows[0].length > rows[1].length) ? rows[0] : rows[1];
 	}
 
-	firstWordForwardsLastWordBackwards(firstWord,lastWord){
+	firstRowForwardsLastRowBackwards(rows){
+
 		//check the longest word out of the two
-		let longestWord = this.getLongestWord(firstWord,lastWord);
-		
-		lastWord = lastWord.reverse();
+		let longestWord = this.getLongestRow(rows);
+		let firstRow = rows[0];
+		let lastRow = rows[1].reverse();
 		let sequence = new Array();
 		for(let i of longestWord.keys()){
 			let sequenceLetters = new Array();
-			if(firstWord[i]){
-				sequenceLetters.push(firstWord[i]);
+			if(firstRow[i]){
+				sequenceLetters.push(firstRow[i]);
 			}
-			if(lastWord[i]){
-				sequenceLetters.push(lastWord[i]);
+			if(lastRow[i]){
+				sequenceLetters.push(lastRow[i]);
 			}
 			sequence.push(sequenceLetters);
 		}
 		return sequence;
+	}
+
+	shuffle(rows) {
+
+	  let array = rows[0].concat(rows[1]);	
+	  let currentIndex = array.length, temporaryValue, randomIndex;
+
+	  // While there remain elements to shuffle...
+	  while (0 !== currentIndex) {
+
+	    // Pick a remaining element...
+	    randomIndex = Math.floor(Math.random() * currentIndex);
+	    currentIndex -= 1;
+
+	    // And swap it with the current element.
+	    temporaryValue = array[currentIndex];
+	    array[currentIndex] = array[randomIndex];
+	    array[randomIndex] = temporaryValue;
+	  }
+
+	  return array;
 	}
 
 	// old working code
@@ -118,6 +182,35 @@ export class Neon {
 
 		instructions["colour"] = this.colour.value;
 		instructions["letterSequence"] = sequence.value;
+
+		return instructions;
+	}
+
+	animate1(){
+
+		let instructions = {};		
+		this.sequenceCounter++; // update the sequenceCounter
+		let sequence = this.sequencer.next();
+
+		if (sequence.done){
+			this.initSequencer();
+			sequence = this.sequencer.next();
+			sequence.startSequence = true;
+
+			this.colour = this.getNextColour();
+			this.sequenceCounter = 0; // reset the sequence counter
+		}
+		// if its time to flicker a random letter, then specify it an generate a new
+		// random interval
+		if (this.sequenceCounter == this.flickerEvent){
+			instructions["flicker"] = true;
+			this.flickerEvent = this.getRandomInt(3,this.flickerInterval);
+			console.log(`doing a new flicker event ${this.flickerEvent}`);
+		}
+
+		instructions["colour"] = this.colour.value;
+		instructions["letterSequence"] = sequence.value;
+		instructions["startSequence"] = sequence.startSequence;
 
 		return instructions;
 	}
