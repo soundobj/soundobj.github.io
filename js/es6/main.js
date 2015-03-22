@@ -7,6 +7,7 @@ var randomFlicker = new RandomFlicker(
 );
 
 var neon = new Neon();
+neon.setup([['N','E','O','N1'],['L','O1','U','N2','G','E1']]);
 
 function whichTransitionEvent(){
     var t;
@@ -45,7 +46,7 @@ function whichTransitionEvent(){
 let transitionEvent = whichTransitionEvent();
 $("#neon g").on(transitionEvent,function(e) {
 	$("#neon g").attr("class","");	
-	let animate = neon.animate();
+	let animate = neon.animate1();
 
 	console.log(animate);
 	console.log($("#neon g").attr("class"));
@@ -64,13 +65,15 @@ $("#neon g").on(transitionEvent,function(e) {
 	    } else {
 	    	$("#" + currentElement).attr("class","delay");
 	    }
-		
-	} else {
-		var nextLetter = randomFlicker.getElement();
-		if(nextLetter.value === e.target.id){
-			nextLetter = randomFlicker.getDifferentElement(nextLetter.value);
-		}
-		console.log(`current letter ${e.target.id} new letter ${nextLetter.value}`);
-		$("#" + nextLetter.value).attr("class","bulb");
-	}
+
+	    if(animate.startSequence){
+		    console.log("start seq");
+			var nextLetter = randomFlicker.getElement();
+			if(nextLetter.value === e.target.id){
+				nextLetter = randomFlicker.getDifferentElement(nextLetter.value);
+			}
+			console.log(`current letter ${e.target.id} new letter ${nextLetter.value}`);
+			$("#" + nextLetter.value).attr("class","bulb");	
+	    }	
+	} 
 });

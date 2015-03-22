@@ -8,8 +8,44 @@ System.registerModule("es6/neon.js", [], function() {
     this.flickerInterval = 6;
     this.flickerEvent = this.getRandomInt(3, this.flickerInterval);
     this.colour = this.getNextColour();
+    this.sequencers;
+    this.sequencer;
+    this.iterableSequencers = new Array();
+    this.rows;
   };
+  var $Neon = Neon;
   ($traceurRuntime.createClass)(Neon, {
+    setup: function(rows) {
+      this.rows = rows;
+      this.addSequencer(this.firstRowForwardsLastRowBackwards);
+      this.addSequencer(this.shuffle);
+      this.initSequencers();
+      this.initSequencer();
+    },
+    addSequencer: function(callback) {
+      this.iterableSequencers.push(callback);
+    },
+    initSequencer: function() {
+      var sequencer = this.sequencers.next();
+      if (sequencer.done) {
+        console.log('restart initSequencer');
+        this.initSequencers();
+        sequencer = this.sequencers.next();
+      }
+      this.sequencer = this.iterator(sequencer.value(this.rows));
+    },
+    initSequencers: function(sequencers) {
+      this.sequencers = this.iterator(this.iterableSequencers);
+    },
+    animateSequences: function() {
+      var sequence = this.sequencer.next();
+      if (sequence.done) {
+        this.initSequencer();
+        sequence = this.sequencer.next();
+        sequence.startSequence = true;
+      }
+      return sequence;
+    },
     iterator: $traceurRuntime.initGeneratorFunction(function $__3(elements) {
       var $__1,
           $__2,
@@ -40,28 +76,41 @@ System.registerModule("es6/neon.js", [], function() {
           }
       }, $__3, this);
     }),
-    getLongestWord: function(firstWord, lastWord) {
-      return (firstWord.length > lastWord.length) ? firstWord : lastWord;
-    },
-    firstWordForwardsLastWordBackwards: function(firstWord, lastWord) {
-      var longestWord = this.getLongestWord(firstWord, lastWord);
-      lastWord = lastWord.reverse();
+    firstRowForwardsLastRowBackwards: function(rows) {
+      var longestWord = $Neon.getLongestRow(rows);
+      console.log(("called fisrt row longest is " + longestWord));
+      var firstRow = rows[0];
+      var lastRow = (rows[1].slice()).reverse();
       var sequence = new Array();
       for (var $__1 = longestWord.keys()[$traceurRuntime.toProperty(Symbol.iterator)](),
           $__2 = void 0; !($__2 = $__1.next()).done; ) {
         var i = $__2.value;
         {
           var sequenceLetters = new Array();
-          if (firstWord[i]) {
-            sequenceLetters.push(firstWord[i]);
+          if (firstRow[i]) {
+            sequenceLetters.push(firstRow[i]);
           }
-          if (lastWord[i]) {
-            sequenceLetters.push(lastWord[i]);
+          if (lastRow[i]) {
+            sequenceLetters.push(lastRow[i]);
           }
           sequence.push(sequenceLetters);
         }
       }
       return sequence;
+    },
+    shuffle: function(rows) {
+      var array = rows[0].concat(rows[1]);
+      var currentIndex = array.length,
+          temporaryValue,
+          randomIndex;
+      while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+      return array;
     },
     colours: $traceurRuntime.initGeneratorFunction(function $__4() {
       return $traceurRuntime.createGeneratorInstance(function($ctx) {
@@ -269,10 +318,33 @@ System.registerModule("es6/neon.js", [], function() {
       instructions["letterSequence"] = sequence.value;
       return instructions;
     },
+    animate1: function() {
+      var instructions = {};
+      this.sequenceCounter++;
+      var sequence = this.sequencer.next();
+      if (sequence.done) {
+        this.initSequencer();
+        sequence = this.sequencer.next();
+        sequence.startSequence = true;
+        this.colour = this.getNextColour();
+        this.sequenceCounter = 0;
+      }
+      if (this.sequenceCounter == this.flickerEvent) {
+        instructions["flicker"] = true;
+        this.flickerEvent = this.getRandomInt(3, this.flickerInterval);
+        console.log(("doing a new flicker event " + this.flickerEvent));
+      }
+      instructions["colour"] = this.colour.value;
+      instructions["letterSequence"] = (sequence.value.constructor === Array) ? sequence.value : [sequence.value];
+      instructions["startSequence"] = sequence.startSequence;
+      return instructions;
+    },
     getRandomInt: function(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-  }, {});
+  }, {getLongestRow: function(rows) {
+      return (rows[0].length > rows[1].length) ? rows[0] : rows[1];
+    }});
   return {get Neon() {
       return Neon;
     }};
@@ -334,6 +406,7 @@ System.registerModule("es6/main.js", [], function() {
   var neonWords = [['N', 'E', 'O', 'N1'], ['L', 'O1', 'U', 'N2', 'G', 'E1']];
   var randomFlicker = new RandomFlicker(neonWords[0].concat(neonWords[1]));
   var neon = new Neon();
+  neon.setup([['N', 'E', 'O', 'N1'], ['L', 'O1', 'U', 'N2', 'G', 'E1']]);
   function whichTransitionEvent() {
     var t;
     var el = document.createElement('fakeelement');
@@ -366,7 +439,7 @@ System.registerModule("es6/main.js", [], function() {
   var transitionEvent = whichTransitionEvent();
   $("#neon g").on(transitionEvent, function(e) {
     $("#neon g").attr("class", "");
-    var animate = neon.animate();
+    var animate = neon.animate1();
     console.log(animate);
     console.log($("#neon g").attr("class"));
     if (animate.letterSequence) {
@@ -385,13 +458,15 @@ System.registerModule("es6/main.js", [], function() {
       } else {
         $("#" + currentElement).attr("class", "delay");
       }
-    } else {
-      var nextLetter = randomFlicker.getElement();
-      if (nextLetter.value === e.target.id) {
-        nextLetter = randomFlicker.getDifferentElement(nextLetter.value);
+      if (animate.startSequence) {
+        console.log("start seq");
+        var nextLetter = randomFlicker.getElement();
+        if (nextLetter.value === e.target.id) {
+          nextLetter = randomFlicker.getDifferentElement(nextLetter.value);
+        }
+        console.log(("current letter " + e.target.id + " new letter " + nextLetter.value));
+        $("#" + nextLetter.value).attr("class", "bulb");
       }
-      console.log(("current letter " + e.target.id + " new letter " + nextLetter.value));
-      $("#" + nextLetter.value).attr("class", "bulb");
     }
   });
   return {};

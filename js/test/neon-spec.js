@@ -10,31 +10,15 @@ describe('neon scenarios', () => {
     for (var i = 0; i < 8; i++){
     	colours.push(neon.getNextColour());
     }
-    // console.log(colours);
     assert.equal(colours.length,8);
     assert(colours[colours.length -1] != undefined);
   });
-
-  // it('should change color when a text sequence is completed and random flicker present', () => {
-  // 	let neon = new Neon();
-  // 	let flickerEvent = neon.flickerEvent;
-  // 	let animationSequences = new Array();
-  // 	for (let i = 0; i < 8; i++) {
-  // 		animationSequences.push(neon.animate());
-  // 	}
-  // 	// console.log(`flickerEvent ${flickerEvent}`);
-  // 	// console.log(animationSequences);
-  	
-  // 	// assert(animationSequences[neon.sequenceLength].colour != animationSequences[0].colour);
-  // 	assert(animationSequences[flickerEvent-1].flicker);
-
-  // });
 
   it("should compare rows lengths", () => {
 	let neon = new Neon();
 	let shortWord = new Array("T","H","E");
 	let longWord = new Array("L","O","N","G","E","R");
-	assert(neon.getLongestRow([shortWord,longWord]) == longWord);
+	assert(Neon.getLongestRow([shortWord,longWord]) == longWord);
   });
 
   it("should create sequence of first row forwards and last row backwards", () => {
@@ -69,18 +53,29 @@ describe('neon scenarios', () => {
 
   });
 
-  // it('DYNAMIC should change color when a text sequence is completed and random flicker present', () => {
-  // 	let neon = new Neon();
-  // 	neon.addSequencer(function(rows){
-  // 		return rows[0].concat(rows[1]);
-  // 	});
-  // 	neon.rows = [["A"],["B"]];
-  // 	neon.initSequencers();
-  // 	neon.initSequencer();
-  // 	var sequences = new Array();
-  // 	for(var i = 0; i < 4; i++){
-  // 		sequences.push(neon.animateSequences());
-  // 	}
-  // });
+  it("should setup", () => {
+	let neon = new Neon();
+	neon.setup([['N','E','O','N1'],['L','O1','U','N2','G','E1']]);
+	assert(neon.rows[0][0] == "N");
+	assert(neon.sequencer != undefined);
+	let instructions = neon.animate1();
+	console.log(instructions);
+  });
+
+  it("should shuffle", () => {
+  	let neon = new Neon();
+  	neon.addSequencer(neon.shuffle);
+  	neon.rows = [['L','O1','U','N2','G','E1'],[]];
+  	neon.initSequencers();
+  	neon.initSequencer();
+	var sequences = new Array();
+  	for(var i = 0; i < 6; i++){
+  		sequences.push(neon.animate1());
+  	}
+
+  	console.log(sequences);
+
+  });
+
 
 });

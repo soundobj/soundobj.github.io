@@ -2,7 +2,7 @@
 export class Neon {
 
 	constructor() {	
-		console.log("enter new neon");
+		// console.log("enter new neon");
 		this.colourIterator = this.colours();
 		this.letterSequenceIterator = this.letterSequence(); 		
 		this.sequenceCounter = 0;
@@ -58,16 +58,16 @@ export class Neon {
 		}
 	}
 
-	getLongestRow(rows){
+	static getLongestRow(rows){
 		return (rows[0].length > rows[1].length) ? rows[0] : rows[1];
 	}
 
 	firstRowForwardsLastRowBackwards(rows){
-
-		//check the longest word out of the two
-		let longestWord = this.getLongestRow(rows);
+		
+		let longestWord = Neon.getLongestRow(rows);
+		console.log(`called fisrt row longest is ${longestWord}`);
 		let firstRow = rows[0];
-		let lastRow = rows[1].reverse();
+		let lastRow = (rows[1].slice()).reverse();
 		let sequence = new Array();
 		for(let i of longestWord.keys()){
 			let sequenceLetters = new Array();
@@ -209,7 +209,7 @@ export class Neon {
 		}
 
 		instructions["colour"] = this.colour.value;
-		instructions["letterSequence"] = sequence.value;
+		instructions["letterSequence"] = (sequence.value.constructor === Array) ? sequence.value : [sequence.value];
 		instructions["startSequence"] = sequence.startSequence;
 
 		return instructions;
