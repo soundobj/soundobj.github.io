@@ -47,33 +47,19 @@ let transitionEvent = whichTransitionEvent();
 $("#neon g").on(transitionEvent,function(e) {
 	$("#neon g").attr("class","");	
 	let animate = neon.animate1();
-
 	console.log(animate);
-	console.log($("#neon g").attr("class"));
-	
-	// change the colours of the letters in the sequence
-	if(animate.letterSequence){
-		let currentElement;
-	 	for (let elem of animate.letterSequence.values()) {
-	        console.log(`just, elem ${elem}`);
+
+	// reflow https://css-tricks.com/restart-css-animation/
+	e.target.offsetWidth = e.target.offsetWidth;
+
+	if(animate.startSequence){
+		console.log("start seq delayLong");
+		$("#" + e.target.id).attr("class","delayLong");
+	} else {
+		for (let elem of animate.letterSequence.values()) {
+	        console.log(`elem: ${elem}`);
 	        $("#" + elem).attr("stroke",animate.colour);
-	        currentElement = elem;
 	    }
-
-	    if(animate.flicker){
-	    	$("#" + currentElement).attr("class","bulb");
-	    } else {
-	    	$("#" + currentElement).attr("class","delay");
-	    }
-
-	    if(animate.startSequence){
-		    console.log("start seq");
-			var nextLetter = randomFlicker.getElement();
-			if(nextLetter.value === e.target.id){
-				nextLetter = randomFlicker.getDifferentElement(nextLetter.value);
-			}
-			console.log(`current letter ${e.target.id} new letter ${nextLetter.value}`);
-			$("#" + nextLetter.value).attr("class","bulb");	
-	    }	
+	    $("#" + e.target.id).attr("class","delay");
 	} 
 });

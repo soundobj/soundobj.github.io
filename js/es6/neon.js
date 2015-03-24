@@ -14,6 +14,7 @@ export class Neon {
 		this.sequencer;
 		this.iterableSequencers = new Array();
 		this.rows;
+		this.lastSequence = [];
 	}
 
 	setup(rows){
@@ -69,7 +70,7 @@ export class Neon {
 		let firstRow = rows[0];
 		let lastRow = (rows[1].slice()).reverse();
 		let sequence = new Array();
-		for(let i of longestWord.keys()){
+		for(var i=0; i < longestWord.length; i++){
 			let sequenceLetters = new Array();
 			if(firstRow[i]){
 				sequenceLetters.push(firstRow[i]);
@@ -186,6 +187,10 @@ export class Neon {
 		return instructions;
 	}
 
+	wrapIntoArray(value){
+		return (value.constructor === Array) ? value : [value];
+	}
+
 	animate1(){
 
 		let instructions = {};		
@@ -194,12 +199,16 @@ export class Neon {
 
 		if (sequence.done){
 			this.initSequencer();
-			sequence = this.sequencer.next();
+			//sequence = this.sequencer.next();
 			sequence.startSequence = true;
+			sequence.value = [];
 
 			this.colour = this.getNextColour();
 			this.sequenceCounter = 0; // reset the sequence counter
+		} else {
+			this.lastSequence = this.wrapIntoArray(sequence.value);
 		}
+
 		// if its time to flicker a random letter, then specify it an generate a new
 		// random interval
 		if (this.sequenceCounter == this.flickerEvent){
@@ -209,7 +218,7 @@ export class Neon {
 		}
 
 		instructions["colour"] = this.colour.value;
-		instructions["letterSequence"] = (sequence.value.constructor === Array) ? sequence.value : [sequence.value];
+		instructions["letterSequence"] = this.wrapIntoArray(sequence.value);
 		instructions["startSequence"] = sequence.startSequence;
 
 		return instructions;

@@ -12,6 +12,8 @@ System.registerModule("es6/neon.js", [], function() {
     this.sequencer;
     this.iterableSequencers = new Array();
     this.rows;
+    this.lastSequence = [];
+    this.lastAnimatedLetter;
   };
   var $Neon = Neon;
   ($traceurRuntime.createClass)(Neon, {
@@ -82,19 +84,15 @@ System.registerModule("es6/neon.js", [], function() {
       var firstRow = rows[0];
       var lastRow = (rows[1].slice()).reverse();
       var sequence = new Array();
-      for (var $__1 = longestWord.keys()[$traceurRuntime.toProperty(Symbol.iterator)](),
-          $__2 = void 0; !($__2 = $__1.next()).done; ) {
-        var i = $__2.value;
-        {
-          var sequenceLetters = new Array();
-          if (firstRow[i]) {
-            sequenceLetters.push(firstRow[i]);
-          }
-          if (lastRow[i]) {
-            sequenceLetters.push(lastRow[i]);
-          }
-          sequence.push(sequenceLetters);
+      for (var i = 0; i < longestWord.length; i++) {
+        var sequenceLetters = new Array();
+        if (firstRow[i]) {
+          sequenceLetters.push(firstRow[i]);
         }
+        if (lastRow[i]) {
+          sequenceLetters.push(lastRow[i]);
+        }
+        sequence.push(sequenceLetters);
       }
       return sequence;
     },
@@ -318,16 +316,21 @@ System.registerModule("es6/neon.js", [], function() {
       instructions["letterSequence"] = sequence.value;
       return instructions;
     },
+    wrapIntoArray: function(value) {
+      return (value.constructor === Array) ? value : [value];
+    },
     animate1: function() {
       var instructions = {};
       this.sequenceCounter++;
       var sequence = this.sequencer.next();
       if (sequence.done) {
         this.initSequencer();
-        sequence = this.sequencer.next();
         sequence.startSequence = true;
+        sequence.value = [];
         this.colour = this.getNextColour();
         this.sequenceCounter = 0;
+      } else {
+        this.lastSequence = this.wrapIntoArray(sequence.value);
       }
       if (this.sequenceCounter == this.flickerEvent) {
         instructions["flicker"] = true;
@@ -335,7 +338,7 @@ System.registerModule("es6/neon.js", [], function() {
         console.log(("doing a new flicker event " + this.flickerEvent));
       }
       instructions["colour"] = this.colour.value;
-      instructions["letterSequence"] = (sequence.value.constructor === Array) ? sequence.value : [sequence.value];
+      instructions["letterSequence"] = this.wrapIntoArray(sequence.value);
       instructions["startSequence"] = sequence.startSequence;
       return instructions;
     },
@@ -441,32 +444,20 @@ System.registerModule("es6/main.js", [], function() {
     $("#neon g").attr("class", "");
     var animate = neon.animate1();
     console.log(animate);
-    console.log($("#neon g").attr("class"));
-    if (animate.letterSequence) {
-      var currentElement;
+    e.target.offsetWidth = e.target.offsetWidth;
+    if (animate.startSequence) {
+      console.log("start seq delayLong");
+      $("#" + e.target.id).attr("class", "delayLong");
+    } else {
       for (var $__2 = animate.letterSequence.values()[$traceurRuntime.toProperty(Symbol.iterator)](),
           $__3 = void 0; !($__3 = $__2.next()).done; ) {
         var elem = $__3.value;
         {
-          console.log(("just, elem " + elem));
+          console.log(("just, elem scope1 " + elem));
           $("#" + elem).attr("stroke", animate.colour);
-          currentElement = elem;
         }
       }
-      if (animate.flicker) {
-        $("#" + currentElement).attr("class", "bulb");
-      } else {
-        $("#" + currentElement).attr("class", "delay");
-      }
-      if (animate.startSequence) {
-        console.log("start seq");
-        var nextLetter = randomFlicker.getElement();
-        if (nextLetter.value === e.target.id) {
-          nextLetter = randomFlicker.getDifferentElement(nextLetter.value);
-        }
-        console.log(("current letter " + e.target.id + " new letter " + nextLetter.value));
-        $("#" + nextLetter.value).attr("class", "bulb");
-      }
+      $("#" + e.target.id).attr("class", "delay");
     }
   });
   return {};

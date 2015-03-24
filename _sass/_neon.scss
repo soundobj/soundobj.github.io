@@ -10,9 +10,9 @@
   stroke: $yellow-color;
 }
 
-$duration: 1s;
-
-$duration-glow: 1s;
+$duration: 0.01s;
+$durationLong: 3s;
+$duration-glow: 0.5s;
 
 .delay {
   animation-delay: $duration;
@@ -40,19 +40,47 @@ $duration-glow: 1s;
   to {fill: $yellow-color;}
 }
 
+.delayLong {
+  animation-delay: $durationLong;
+  animation-name: glow-two;
+  animation-duration: 0.1s;
+
+  -moz-animation-delay: $durationLong;
+  -moz-animation-name: glow-two;
+  -moz-animation-duration: 0.1s;
+
+  -webkit-animation-delay: $durationLong;
+  -webkit-animation-name: glow-two;
+  -webkit-animation-duration: 0.1s;
+}
+
+.delay1 {
+  animation-delay: $duration;
+  animation-name: glow-two;
+  animation-duration: 0.1s;
+
+  -moz-animation-delay: $duration;
+  -moz-animation-name: glow-two;
+  -moz-animation-duration: 0.1s;
+
+  -webkit-animation-delay: $duration;
+  -webkit-animation-name: glow-two;
+  -webkit-animation-duration: 0.1s;
+}
+
 .bulb {
   stroke: inherit;
   animation-name: glow-blue;
   animation-duration: 0.2s;
-  animation-iteration-count: 4;
+  animation-iteration-count: 2;
 
   -moz-animation-name: glow-blue;
   -moz-animation-duration: 0.2s;
-  -moz-animation-iteration-count: 4;
+  -moz-animation-iteration-count: 2;
 
   -webkit-animation-name: glow-blue;
   -webkit-animation-duration: 0.2s;
-  -webkit-animation-iteration-count: 4;
+  -webkit-animation-iteration-count: 2;
 
 }
 
