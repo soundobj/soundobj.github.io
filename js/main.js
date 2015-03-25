@@ -13,7 +13,6 @@ System.registerModule("es6/neon.js", [], function() {
     this.iterableSequencers = new Array();
     this.rows;
     this.lastSequence = [];
-    this.lastAnimatedLetter;
   };
   var $Neon = Neon;
   ($traceurRuntime.createClass)(Neon, {
@@ -444,7 +443,8 @@ System.registerModule("es6/main.js", [], function() {
     $("#neon g").attr("class", "");
     var animate = neon.animate1();
     console.log(animate);
-    e.target.offsetWidth = e.target.offsetWidth;
+    var el = $("#" + e.target.id);
+    el.before(el.clone(true)).remove();
     if (animate.startSequence) {
       console.log("start seq delayLong");
       $("#" + e.target.id).attr("class", "delayLong");
@@ -453,7 +453,7 @@ System.registerModule("es6/main.js", [], function() {
           $__3 = void 0; !($__3 = $__2.next()).done; ) {
         var elem = $__3.value;
         {
-          console.log(("just, elem scope1 " + elem));
+          console.log(("enw elem: " + elem));
           $("#" + elem).attr("stroke", animate.colour);
         }
       }

@@ -50,14 +50,17 @@ $("#neon g").on(transitionEvent,function(e) {
 	console.log(animate);
 
 	// reflow https://css-tricks.com/restart-css-animation/
-	e.target.offsetWidth = e.target.offsetWidth;
+	//e.target.offsetWidth = e.target.offsetWidth;
+	var el = $("#" + e.target.id );
+	//Prepend the clone & then remove the original element
+    el.before( el.clone(true) ).remove();
 
 	if(animate.startSequence){
 		console.log("start seq delayLong");
 		$("#" + e.target.id).attr("class","delayLong");
 	} else {
 		for (let elem of animate.letterSequence.values()) {
-	        console.log(`elem: ${elem}`);
+	        console.log(`enw elem: ${elem}`);
 	        $("#" + elem).attr("stroke",animate.colour);
 	    }
 	    $("#" + e.target.id).attr("class","delay");
