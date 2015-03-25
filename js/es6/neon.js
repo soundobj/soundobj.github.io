@@ -21,6 +21,7 @@ export class Neon {
 		this.rows = rows;
 		this.addSequencer(this.firstRowForwardsLastRowBackwards);
 		this.addSequencer(this.shuffle);
+		this.addSequencer(this.zigzag);
 		this.initSequencers();
 		this.initSequencer();
 	}
@@ -59,28 +60,47 @@ export class Neon {
 		}
 	}
 
-	static getLongestRow(rows){
+	static getBiggestArray(rows){
 		return (rows[0].length > rows[1].length) ? rows[0] : rows[1];
 	}
 
-	firstRowForwardsLastRowBackwards(rows){
-		
-		let longestWord = Neon.getLongestRow(rows);
-		console.log(`called fisrt row longest is ${longestWord}`);
-		let firstRow = rows[0];
-		let lastRow = (rows[1].slice()).reverse();
-		let sequence = new Array();
-		for(var i=0; i < longestWord.length; i++){
-			let sequenceLetters = new Array();
-			if(firstRow[i]){
-				sequenceLetters.push(firstRow[i]);
+	static arraysEqual(arr1, arr2) {
+	    if(arr1.length !== arr2.length) {
+	        return false;
+	    }
+	    for(var i = arr1.length; i--;) {
+	        if(arr1[i] !== arr2[i]) {
+	            return false;
+	        }
+	    }
+	    return true;
+	}
+
+	static mergeArrays(arrays,flat=false){
+		var biggerArray = Neon.getBiggestArray(arrays);
+		var smallerArray = Neon.arraysEqual(arrays[0],biggerArray) ? arrays[1] : arrays[0];
+		let merged = new Array();
+		for(var i=0; i < biggerArray.length; i++){
+			let temp = (flat) ? merged : new Array();
+			temp.push(biggerArray[i]);
+			if(smallerArray[i]){
+				temp.push(smallerArray[i]);
 			}
-			if(lastRow[i]){
-				sequenceLetters.push(lastRow[i]);
+			if(!flat){
+				merged.push(temp);
 			}
-			sequence.push(sequenceLetters);
 		}
-		return sequence;
+		return merged;
+	}
+
+	firstRowForwardsLastRowBackwards(rows){
+		console.log(`called fisrt row longest`);
+		return Neon.mergeArrays([rows[0],(rows[1].slice()).reverse()]);
+	}
+
+	zigzag(rows){
+		console.log(`called zig zag flat`);
+		return Neon.mergeArrays([rows[0],rows[1]],true);
 	}
 
 	shuffle(rows) {

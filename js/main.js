@@ -20,6 +20,7 @@ System.registerModule("es6/neon.js", [], function() {
       this.rows = rows;
       this.addSequencer(this.firstRowForwardsLastRowBackwards);
       this.addSequencer(this.shuffle);
+      this.addSequencer(this.zigzag);
       this.initSequencers();
       this.initSequencer();
     },
@@ -78,22 +79,12 @@ System.registerModule("es6/neon.js", [], function() {
       }, $__3, this);
     }),
     firstRowForwardsLastRowBackwards: function(rows) {
-      var longestWord = $Neon.getLongestRow(rows);
-      console.log(("called fisrt row longest is " + longestWord));
-      var firstRow = rows[0];
-      var lastRow = (rows[1].slice()).reverse();
-      var sequence = new Array();
-      for (var i = 0; i < longestWord.length; i++) {
-        var sequenceLetters = new Array();
-        if (firstRow[i]) {
-          sequenceLetters.push(firstRow[i]);
-        }
-        if (lastRow[i]) {
-          sequenceLetters.push(lastRow[i]);
-        }
-        sequence.push(sequenceLetters);
-      }
-      return sequence;
+      console.log("called fisrt row longest");
+      return $Neon.mergeArrays([rows[0], (rows[1].slice()).reverse()]);
+    },
+    zigzag: function(rows) {
+      console.log("called zig zag flat");
+      return $Neon.mergeArrays([rows[0], rows[1]], true);
     },
     shuffle: function(rows) {
       var array = rows[0].concat(rows[1]);
@@ -344,9 +335,37 @@ System.registerModule("es6/neon.js", [], function() {
     getRandomInt: function(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-  }, {getLongestRow: function(rows) {
+  }, {
+    getBiggestArray: function(rows) {
       return (rows[0].length > rows[1].length) ? rows[0] : rows[1];
-    }});
+    },
+    arraysEqual: function(arr1, arr2) {
+      if (arr1.length !== arr2.length)
+        return false;
+      for (var i = arr1.length; i--; ) {
+        if (arr1[i] !== arr2[i])
+          return false;
+      }
+      return true;
+    },
+    mergeArrays: function(arrays) {
+      var flat = arguments[1] !== (void 0) ? arguments[1] : false;
+      var biggerArray = $Neon.getBiggestArray(arrays);
+      var smallerArray = $Neon.arraysEqual(arrays[0], biggerArray) ? arrays[1] : arrays[0];
+      var merged = new Array();
+      for (var i = 0; i < biggerArray.length; i++) {
+        var temp = (flat) ? merged : new Array();
+        temp.push(biggerArray[i]);
+        if (smallerArray[i]) {
+          temp.push(smallerArray[i]);
+        }
+        if (!flat) {
+          merged.push(temp);
+        }
+      }
+      return merged;
+    }
+  });
   return {get Neon() {
       return Neon;
     }};
@@ -453,7 +472,7 @@ System.registerModule("es6/main.js", [], function() {
           $__3 = void 0; !($__3 = $__2.next()).done; ) {
         var elem = $__3.value;
         {
-          console.log(("enw elem: " + elem));
+          console.log(("elem: " + elem));
           $("#" + elem).attr("stroke", animate.colour);
         }
       }

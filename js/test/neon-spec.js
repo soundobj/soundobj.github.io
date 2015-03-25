@@ -18,7 +18,7 @@ describe('neon scenarios', () => {
 	let neon = new Neon();
 	let shortWord = new Array("T","H","E");
 	let longWord = new Array("L","O","N","G","E","R");
-	assert(Neon.getLongestRow([shortWord,longWord]) == longWord);
+	assert(Neon.getBiggestArray([shortWord,longWord]) == longWord);
   });
 
   it("should create sequence of first row forwards and last row backwards", () => {
@@ -26,7 +26,8 @@ describe('neon scenarios', () => {
 	let shortWord = new Array("T","H","E");
 	let longWord = new Array("L","O","N","G","E","R");
 	let sequence = neon.firstRowForwardsLastRowBackwards([shortWord,longWord]);
-	assert(sequence[0].every(function(element,index){ return element === ["T","R"][index]; }));
+	//console.log(sequence);
+	assert(sequence[0].every(function(element,index){ return element === ["R","T"][index]; }));
 	assert(sequence[3].every(function(element,index){ return element === ["N"][index]; }));
 	assert(sequence.length == longWord.length);
   });
@@ -43,12 +44,12 @@ describe('neon scenarios', () => {
   	for(var i = 0; i < 4; i++){
   		sequences.push(neon.animate1());
   	}
-  	console.log(sequences);
+  	//console.log(sequences);
   	assert(sequences[0].letterSequence == 'A');
   	assert(sequences[1].letterSequence == 'B');
-  	assert(sequences[2].letterSequence == 'A');
+  	assert(sequences[2].letterSequence == false);
   	assert(sequences[2].startSequence);
-  	assert(sequences[3].letterSequence == 'B');
+  	assert(sequences[3].letterSequence == 'A');
   	assert(sequences[0].colour != sequences[2].colour);
 
   });
@@ -59,7 +60,7 @@ describe('neon scenarios', () => {
 	assert(neon.rows[0][0] == "N");
 	assert(neon.sequencer != undefined);
 	let instructions = neon.animate1();
-	console.log(instructions);
+	//console.log(instructions);
   });
 
   it("should shuffle", () => {
@@ -73,7 +74,7 @@ describe('neon scenarios', () => {
   		sequences.push(neon.animate1());
   	}
 
-  	console.log(sequences);
+  	//console.log(sequences);
 
   });
 

@@ -60,7 +60,7 @@ $("#neon g").on(transitionEvent,function(e) {
 		$("#" + e.target.id).attr("class","delayLong");
 	} else {
 		for (let elem of animate.letterSequence.values()) {
-	        console.log(`enw elem: ${elem}`);
+	        console.log(`elem: ${elem}`);
 	        $("#" + elem).attr("stroke",animate.colour);
 	    }
 	    $("#" + e.target.id).attr("class","delay");
