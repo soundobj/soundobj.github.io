@@ -4,16 +4,6 @@ require('./sinon-cleanup');
 
 describe('neon scenarios', () => {
 
-  it('should reset the generator', () => {
-    let neon = new Neon();
-    let colours = new Array();
-    for (var i = 0; i < 8; i++){
-    	colours.push(neon.getNextColour());
-    }
-    assert.equal(colours.length,8);
-    assert(colours[colours.length -1] != undefined);
-  });
-
   it("should compare rows lengths", () => {
 	let neon = new Neon();
 	let shortWord = new Array("T","H","E");
@@ -34,15 +24,24 @@ describe('neon scenarios', () => {
 
   it("should spawn a new sequence iterator when needed", () => {
   	let neon = new Neon();
+
+  	// manual setup
+
   	neon.addSequencer(function(rows){
   		return rows[0].concat(rows[1]);
   	});
   	neon.rows = [["A"],["B"]];
   	neon.initSequencers();
   	neon.initSequencer();
+
+  	neon.colours = ['rgb(255,183,10)','rgb(25,110,238)','rgb(6,162,95)','rgb(200,30,80)'];
+  	neon.colourIterator = neon.iterator(neon.colours);
+	neon.colour = neon.getNextColour();
+
+
   	var sequences = new Array();
   	for(var i = 0; i < 4; i++){
-  		sequences.push(neon.animate1());
+  		sequences.push(neon.animate());
   	}
   	//console.log(sequences);
   	assert(sequences[0].letterSequence == 'A');
@@ -56,27 +55,12 @@ describe('neon scenarios', () => {
 
   it("should setup", () => {
 	let neon = new Neon();
-	neon.setup([['N','E','O','N1'],['L','O1','U','N2','G','E1']]);
+	neon.setup(
+		[['N','E','O','N1'],['L','O1','U','N2','G','E1']],
+		['rgb(255,183,10)','rgb(25,110,238)','rgb(6,162,95)','rgb(200,30,80)']
+	);
 	assert(neon.rows[0][0] == "N");
 	assert(neon.sequencer != undefined);
-	let instructions = neon.animate1();
-	//console.log(instructions);
   });
-
-  it("should shuffle", () => {
-  	let neon = new Neon();
-  	neon.addSequencer(neon.shuffle);
-  	neon.rows = [['L','O1','U','N2','G','E1'],[]];
-  	neon.initSequencers();
-  	neon.initSequencer();
-	var sequences = new Array();
-  	for(var i = 0; i < 6; i++){
-  		sequences.push(neon.animate1());
-  	}
-
-  	//console.log(sequences);
-
-  });
-
 
 });
