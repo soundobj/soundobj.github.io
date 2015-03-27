@@ -2,13 +2,13 @@ System.registerModule("es6/neon.js", [], function() {
   "use strict";
   var __moduleName = "es6/neon.js";
   var Neon = function Neon() {
-    this.colourIterator;
-    this.colours;
-    this.colour;
-    this.sequencers;
-    this.sequencer;
-    this.iterableSequencers = new Array();
-    this.rows;
+    this.colourIterator = undefined;
+    this.colours = undefined;
+    this.colour = undefined;
+    this.sequencers = undefined;
+    this.sequencer = undefined;
+    this.iterableSequencers = [];
+    this.rows = undefined;
   };
   var $Neon = Neon;
   ($traceurRuntime.createClass)(Neon, {
@@ -34,7 +34,7 @@ System.registerModule("es6/neon.js", [], function() {
       }
       this.sequencer = this.iterator(sequencer.value(this.rows));
     },
-    initSequencers: function(sequencers) {
+    initSequencers: function() {
       this.sequencers = this.iterator(this.iterableSequencers);
     },
     iterator: $traceurRuntime.initGeneratorFunction(function $__3(elements) {
@@ -104,9 +104,9 @@ System.registerModule("es6/neon.js", [], function() {
         sequence.value = [];
         this.colour = this.getNextColour();
       }
-      instructions["colour"] = this.colour.value;
-      instructions["letterSequence"] = $Neon.wrapIntoArray(sequence.value);
-      instructions["startSequence"] = sequence.startSequence;
+      instructions.colour = this.colour.value;
+      instructions.letterSequence = $Neon.wrapIntoArray(sequence.value);
+      instructions.startSequence = sequence.startSequence;
       return instructions;
     }
   }, {
@@ -128,9 +128,9 @@ System.registerModule("es6/neon.js", [], function() {
       var flat = arguments[1] !== (void 0) ? arguments[1] : false;
       var biggerArray = $Neon.getBiggestArray(arrays);
       var smallerArray = $Neon.arraysEqual(arrays[0], biggerArray) ? arrays[1] : arrays[0];
-      var merged = new Array();
+      var merged = [];
       for (var i = 0; i < biggerArray.length; i++) {
-        var temp = (flat) ? merged : new Array();
+        var temp = (flat) ? merged : [];
         temp.push(biggerArray[i]);
         if (smallerArray[i]) {
           temp.push(smallerArray[i]);

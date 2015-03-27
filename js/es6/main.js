@@ -1,4 +1,4 @@
-import {Neon} from '../es6/neon.js'
+import {Neon} from '../es6/neon.js';
 var neon = new Neon();
 neon.setup(
 	[['N','E','O','N1'],['L','O1','U','N2','G','E1']],
