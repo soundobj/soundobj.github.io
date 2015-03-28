@@ -5,7 +5,7 @@ date:   2015-02-21 16:49:40
 categories: Es6 JavaScript CSS
 ---
 
-Following my previous post I will look at how to utilise Javascript to create an animation on a group of SVG elements. You can see the result on this site's banner. The rationale for this animation is to create sweeping effects to change the colour of the SVG elements. you can look at the full source code on [Github][sourceCode].
+Following my [previous post][previousPost] I will look at how to utilise Javascript to create an animation on a group of SVG elements. You can see the result on this site's banner. The rationale for this animation is to create sweeping effects to change the colour of the SVG elements. you can look at the full source code on [Github][sourceCode].
 
 ## CSS animation event register 
 
@@ -255,11 +255,10 @@ $duration: 0.01s;
 
 We are targeting a hidden property of the SVG element on the animation keyframe so nothing really changes on the animation. Thanks for reading.
 
-
+[previousPost]:/svg/2015/02/21/svg-tips.html
 [animationend]:https://developer.mozilla.org/en-US/docs/Web/Events/animationend
 [animationEvent]:http://www.w3.org/TR/css3-animations/#AnimationEvent-types
 [generators]:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*
 [shuffle]:http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
 [restartAnimation]:https://css-tricks.com/restart-css-animation/
 [sourceCode]:https://github.com/soundobj/soundobj.github.io/tree/master/js/es6
-
