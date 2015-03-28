@@ -27,11 +27,11 @@ describe('neon scenarios', () => {
 
   	// manual setup
 
-  	neon.addSequencer(function(rows){
+  	neon.addAnimationPattern(function(rows){
   		return rows[0].concat(rows[1]);
   	});
   	neon.rows = [["A"],["B"]];
-  	neon.initSequencers();
+  	neon.initPatterns();
   	neon.initSequencer();
 
   	neon.colours = ['rgb(255,183,10)','rgb(25,110,238)','rgb(6,162,95)','rgb(200,30,80)'];

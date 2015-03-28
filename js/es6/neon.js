@@ -6,9 +6,9 @@ export class Neon {
 		this.colours = undefined;
 		this.colour = undefined;
 
-		this.sequencers = undefined;
+		this.patterns = undefined;
 		this.sequencer = undefined;
-		this.iterableSequencers = [];
+		this.animationPatternCallbacks = [];
 		this.rows = undefined;
 	}
 	/**
@@ -21,10 +21,10 @@ export class Neon {
 	 */
 	setup(rows,colours){		
 		this.rows = rows;
-		this.addSequencer(this.firstRowForwardsLastRowBackwards);
-		this.addSequencer(this.shuffle);
-		this.addSequencer(this.zigzag);
-		this.initSequencers();
+		this.addAnimationPattern(this.firstRowForwardsLastRowBackwards);
+		this.addAnimationPattern(this.shuffle);
+		this.addAnimationPattern(this.zigzag);
+		this.initPatterns();
 		this.initSequencer();
 
 		this.colours = colours;
@@ -32,36 +32,36 @@ export class Neon {
 		this.colour = this.getNextColour();
 	}
 	/**
-	 * add a callback to the list of sequencers
+	 * add a callback to the list of patterns
 	 * 
 	 * @param Function callback callbacks must return
 	 * and array of DOM elements thus forming the animation sequence
 	 * @return void
 	 */
-	addSequencer(callback){		
-		this.iterableSequencers.push(callback);
+	addAnimationPattern(callback){		
+		this.animationPatternCallbacks.push(callback);
 	}
 	/**
-	 * manages the lifecycle of generator based sequencers, when the sequencers
-	 * generator is done it instantiates a new sequencers generator and sets the 
+	 * manages the lifecycle of generator based patterns, when the patterns
+	 * generator is done it instantiates a new patterns generator and sets the 
 	 * current sequencer to a newly instantiated sequencer using the supplied rows
 	 *
 	 * @return void
 	 */
 	initSequencer(){
-		let sequencer = this.sequencers.next();
+		let sequencer = this.patterns.next();
 		if (sequencer.done){
-			this.initSequencers();
-			sequencer = this.sequencers.next();
+			this.initPatterns();
+			sequencer = this.patterns.next();
 		}
 		this.sequencer = this.iterator(sequencer.value(this.rows));
 	}
 	/**
-	 * instatiates a new generator that yield sequencers
+	 * instatiates a new generator that yield patterns
 	 * @return void
 	 */
-	initSequencers(){
-		this.sequencers = this.iterator(this.iterableSequencers);
+	initPatterns(){
+		this.patterns = this.iterator(this.animationPatternCallbacks);
 	}
 	/**
 	 * generic generator: pass an array and get a generator of the values

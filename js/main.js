@@ -5,37 +5,37 @@ System.registerModule("es6/neon.js", [], function() {
     this.colourIterator = undefined;
     this.colours = undefined;
     this.colour = undefined;
-    this.sequencers = undefined;
+    this.patterns = undefined;
     this.sequencer = undefined;
-    this.iterableSequencers = [];
+    this.animationPatternCallbacks = [];
     this.rows = undefined;
   };
   var $Neon = Neon;
   ($traceurRuntime.createClass)(Neon, {
     setup: function(rows, colours) {
       this.rows = rows;
-      this.addSequencer(this.firstRowForwardsLastRowBackwards);
-      this.addSequencer(this.shuffle);
-      this.addSequencer(this.zigzag);
-      this.initSequencers();
+      this.addAnimationPattern(this.firstRowForwardsLastRowBackwards);
+      this.addAnimationPattern(this.shuffle);
+      this.addAnimationPattern(this.zigzag);
+      this.initPatterns();
       this.initSequencer();
       this.colours = colours;
       this.colourIterator = this.iterator(this.colours);
       this.colour = this.getNextColour();
     },
-    addSequencer: function(callback) {
-      this.iterableSequencers.push(callback);
+    addAnimationPattern: function(callback) {
+      this.animationPatternCallbacks.push(callback);
     },
     initSequencer: function() {
-      var sequencer = this.sequencers.next();
+      var sequencer = this.patterns.next();
       if (sequencer.done) {
-        this.initSequencers();
-        sequencer = this.sequencers.next();
+        this.initPatterns();
+        sequencer = this.patterns.next();
       }
       this.sequencer = this.iterator(sequencer.value(this.rows));
     },
-    initSequencers: function() {
-      this.sequencers = this.iterator(this.iterableSequencers);
+    initPatterns: function() {
+      this.patterns = this.iterator(this.animationPatternCallbacks);
     },
     iterator: $traceurRuntime.initGeneratorFunction(function $__3(elements) {
       var $__1,
