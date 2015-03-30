@@ -2,6 +2,7 @@
   <!-- Site Logo -->
   <div class="logo">
     <a href="/" title="navigate home">
+      <!--[if gte IE 9]><!-->
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          viewBox="0 0 1097.945 501.079" xml:space="preserve">
         <defs>
@@ -136,6 +137,10 @@
           <g id="O1" stroke="rgb(200,30,80)" filter="url(#blur)"><use xlink:href="#O-def" x="-136" y="234"/></g>
         </g>
       </svg>
+      <!--<![endif]-->
+      <!--[if lte IE 8]>
+        <img src="img/logo.jpg"/>
+      <![endif]-->
     </a>
   </div>
   <!-- Navigation -->
@@ -160,6 +165,7 @@
   <!-- Navigation Icon -->
   <div class="menu-button">
      <a href="#" class="menu-icon" title="Open site navigation">
+     <!--[if gte IE 9]><!-->
       <svg class="settings-svg">
         <g id="settings-icon" class="settings-icon-closed">
           <line x1="0" y1="8" x2="48" y2="8"/>
@@ -167,6 +173,10 @@
           <line x1="0" y1="28" x2="48" y2="28"/>
         </g>
       </svg>
+      <!--<![endif]-->
+      <!--[if lte IE 8]>
+        <img src="img/menu.png"/>
+      <![endif]-->
     </a> 
   </div> 
 </header>
