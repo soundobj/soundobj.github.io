@@ -1,0 +1,11 @@
+$img-path : "../img/refmeimg";
+
+.header {
+	background: url(#{$img-path}/header.png);
+	background-repeat: no-repeat;
+	min-height: 100%;
+	width: 566px;
+	margin: 0 auto;
+}
+
+.grid {}

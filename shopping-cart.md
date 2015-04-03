@@ -4,7 +4,6 @@ title: Angular Shopping Cart
 permalink: /shopping-cart/
 ---
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-
 <script type="text/javascript" src="{{ "/js/shoppingCartController.js" | prepend: site.baseurl }}"></script>
 <script>
 var app = angular.module('app', [], function($interpolateProvider) {
