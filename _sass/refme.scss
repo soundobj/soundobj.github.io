@@ -1,11 +1,154 @@
-$img-path : "../img/refmeimg";
+$column-size: 190;
+$max-width: #{$column-size * 3}px;
+$mid-width: #{$column-size * 2}px;
+$min-width: #{$column-size}px;
+$row-height: 103;
+$item-height: #{$row-height}px;
+
+@mixin background-img($path,$width:100%,$height:100%) {
+	background-image: url($path);
+	width: $width;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	height: $height;
+}
+
+@mixin columnLayout($width) {
+	display: table-cell;
+	width: $width;
+	vertical-align: middle;
+}
 
 .header {
-	background: url(#{$img-path}/header.png);
-	background-repeat: no-repeat;
-	min-height: 100%;
-	width: 566px;
+	@include background-img("../img/refme/header.png",$max-width,317px);
+}
+
+.grid-a {
+	@include background-img("../img/refme/grid-a.png",$min-width,$item-height);
+}
+
+.grid-a-1 {
+	@include background-img("../img/refme/grid-a-1.png",$min-width,#{$row-height * 2}px);
+}
+
+.grid-b {
+	@include background-img("../img/refme/grid-b.png",$min-width,$item-height);
+}
+
+.grid-b-1 {
+	@include background-img("../img/refme/grid-b-1.png",$min-width,$item-height);
+}
+
+.grid-b-2 {
+	@include background-img("../img/refme/grid-b-2.png",$min-width,$item-height);
+}
+
+.grid-c {
+	@include background-img("../img/refme/grid-c.png",$min-width,#{$row-height * 2}px);
+}
+
+.grid-c-1 {
+	@include background-img("../img/refme/grid-c-1.png",$min-width,$item-height);
+}
+
+.follow {
+	@include background-img("../img/refme/footer-a.png",$min-width,65px);
+}
+
+.about {
+	@include background-img("../img/refme/footer-b.png",$min-width,65px);
+}
+
+.explore {
+	@include background-img("../img/refme/footer-c.png",$min-width,65px);
+}
+
+.footer-img {
+	@include background-img("../img/refme/footer.png",$max-width,123px);
+}
+
+.center {
 	margin: 0 auto;
 }
 
-.grid {}
+/* three column layout */
+@media only screen and ( min-width: $max-width) {
+
+	.column-container, .footer-container {
+		display: table;
+		width: $max-width;
+		margin: 0 auto;
+	}
+
+	.column {
+		@include columnLayout(33%);
+	}
+}
+/* two column layout */
+@media only screen and ( min-width: $mid-width) and ( max-width: $max-width) {
+
+	.header {
+		height: 211px;
+	}
+
+	.follow, .about, .explore {
+		height: 43px;
+	}	
+
+	.footer-img {
+		height: 83px;
+	}
+
+	.center {
+		width: $mid-width;
+	}
+
+	.footer-container {
+		display: table;
+		width: $mid-width;
+			.column {
+				@include columnLayout(33%);
+			}
+	}
+
+	.column-container {
+		width: $mid-width;
+		margin: 0 auto;
+	}
+
+	.column {
+		@include columnLayout(50%);
+	}
+
+	.first {
+		display: none;
+	}
+
+	.grid-a, .grid-a-1 {
+		background-img: none;
+	}
+
+}
+/* single column layout */
+@media only screen and ( max-width: $mid-width) {
+
+	.header {
+		height: 106px;
+	}
+	
+	.column-container, .center {
+		width: $min-width;
+		margin: 0 auto;
+	}
+
+	.first, .second, .footer-img, .grid-c-1 {
+		display: none;
+	}
+	.footer-container {
+		display: block;
+	}
+
+	.footer-img, .grid-a, .grid-a-1, .grid-b, .grid-b-1, .grid-b-2, .grid-c-1 {
+		background-image: none;
+	}
+}
