@@ -5,7 +5,7 @@ permalink: /responsive-layout/
 ---
 <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
 <div class="header center"></div>
-<div class="column-container">
+<div class="column-container center">
 	<div class="column first">
 		<div class="grid-a"></div>
 		<div class="grid-a-1"></div>

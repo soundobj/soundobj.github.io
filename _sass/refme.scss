@@ -77,7 +77,6 @@ $item-height: #{$row-height}px;
 	.column-container, .footer-container {
 		display: table;
 		width: $max-width;
-		margin: 0 auto;
 	}
 
 	.column {
@@ -99,21 +98,15 @@ $item-height: #{$row-height}px;
 		height: 83px;
 	}
 
-	.center {
+	.header, .footer-img, .footer-container, .column-container {
 		width: $mid-width;
 	}
 
 	.footer-container {
 		display: table;
-		width: $mid-width;
 			.column {
 				@include columnLayout(33%);
 			}
-	}
-
-	.column-container {
-		width: $mid-width;
-		margin: 0 auto;
 	}
 
 	.column {
@@ -125,7 +118,7 @@ $item-height: #{$row-height}px;
 	}
 
 	.grid-a, .grid-a-1 {
-		background-img: none;
+		background-image: none;
 	}
 
 }
