@@ -19,36 +19,14 @@ $item-height: #{$row-height}px;
 	vertical-align: middle;
 }
 
+// assets shared across all media queries
+
 .header {
 	@include background-img("../img/refme/header.png",$max-width,317px);
 }
 
-.grid-a {
-	@include background-img("../img/refme/grid-a.png",$min-width,$item-height);
-}
-
-.grid-a-1 {
-	@include background-img("../img/refme/grid-a-1.png",$min-width,#{$row-height * 2}px);
-}
-
-.grid-b {
-	@include background-img("../img/refme/grid-b.png",$min-width,$item-height);
-}
-
-.grid-b-1 {
-	@include background-img("../img/refme/grid-b-1.png",$min-width,$item-height);
-}
-
-.grid-b-2 {
-	@include background-img("../img/refme/grid-b-2.png",$min-width,$item-height);
-}
-
 .grid-c {
 	@include background-img("../img/refme/grid-c.png",$min-width,#{$row-height * 2}px);
-}
-
-.grid-c-1 {
-	@include background-img("../img/refme/grid-c-1.png",$min-width,$item-height);
 }
 
 .follow {
@@ -63,12 +41,31 @@ $item-height: #{$row-height}px;
 	@include background-img("../img/refme/footer-c.png",$min-width,65px);
 }
 
-.footer-img {
-	@include background-img("../img/refme/footer.png",$max-width,123px);
-}
-
 .center {
 	margin: 0 auto;
+}
+
+// shared by 3 and 2 column
+@media only screen and ( min-width: $mid-width) {
+	.footer-img {
+		@include background-img("../img/refme/footer.png",$max-width,123px);
+	}
+
+	.grid-b {
+		@include background-img("../img/refme/grid-b.png",$min-width,$item-height);
+	}
+
+	.grid-b-1 {
+		@include background-img("../img/refme/grid-b-1.png",$min-width,$item-height);
+	}
+
+	.grid-b-2 {
+		@include background-img("../img/refme/grid-b-2.png",$min-width,$item-height);
+	}
+
+	.grid-c-1 {
+		@include background-img("../img/refme/grid-c-1.png",$min-width,$item-height);
+	}
 }
 
 /* three column layout */
@@ -81,6 +78,14 @@ $item-height: #{$row-height}px;
 
 	.column {
 		@include columnLayout(33%);
+	}
+
+	.grid-a {
+		@include background-img("../img/refme/grid-a.png",$min-width,$item-height);
+	}
+
+	.grid-a-1 {
+		@include background-img("../img/refme/grid-a-1.png",$min-width,#{$row-height * 2}px);
 	}
 }
 /* two column layout */
