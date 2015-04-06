@@ -2,72 +2,78 @@ $column-size: 190;
 $max-width: #{$column-size * 3}px;
 $mid-width: #{$column-size * 2}px;
 $min-width: #{$column-size}px;
-$row-height: 103;
-$item-height: #{$row-height}px;
 
-@mixin background-img($path,$width:100%,$height:100%) {
+@mixin background-img($path) {
 	background-image: url($path);
-	width: $width;
 	background-repeat: no-repeat;
 	background-size: 100%;
-	height: $height;
+	width: 100%;
+	height: 0;
 }
 
-@mixin columnLayout($width) {
+@mixin column-layout($width) {
 	display: table-cell;
 	width: $width;
-	vertical-align: middle;
 }
 
-// assets shared across all media queries
-
 .header {
-	@include background-img("../img/refme/header.png",$max-width,317px);
+	@include background-img("../img/refme/header.png");
+	padding-bottom: 56%;
 }
 
 .grid-c {
-	@include background-img("../img/refme/grid-c.png",$min-width,#{$row-height * 2}px);
+	@include background-img("../img/refme/grid-c.png");
+	padding-bottom: 108%;
 }
 
 .follow {
-	@include background-img("../img/refme/footer-a.png",$min-width,65px);
+	@include background-img("../img/refme/footer-a.png");
 }
 
 .about {
-	@include background-img("../img/refme/footer-b.png",$min-width,65px);
+	@include background-img("../img/refme/footer-b.png");
 }
 
 .explore {
-	@include background-img("../img/refme/footer-c.png",$min-width,65px);
+	@include background-img("../img/refme/footer-c.png");
+}
+
+.follow, .about, .explore {
+	padding-bottom: 34%;
 }
 
 .center {
 	margin: 0 auto;
 }
 
-// shared by 3 and 2 column
+// shared by 3 and 2 column layouts
 @media only screen and ( min-width: $mid-width) {
+
 	.footer-img {
-		@include background-img("../img/refme/footer.png",$max-width,123px);
+		@include background-img("../img/refme/footer.png");
+		padding-bottom: 22%;
 	}
 
 	.grid-b {
-		@include background-img("../img/refme/grid-b.png",$min-width,$item-height);
+		@include background-img("../img/refme/grid-b.png");
 	}
 
 	.grid-b-1 {
-		@include background-img("../img/refme/grid-b-1.png",$min-width,$item-height);
+		@include background-img("../img/refme/grid-b-1.png");
 	}
 
 	.grid-b-2 {
-		@include background-img("../img/refme/grid-b-2.png",$min-width,$item-height);
+		@include background-img("../img/refme/grid-b-2.png");
 	}
 
 	.grid-c-1 {
-		@include background-img("../img/refme/grid-c-1.png",$min-width,$item-height);
+		@include background-img("../img/refme/grid-c-1.png");
+	}
+
+	.grid-b, .grid-b-1, .grid-b-2, .grid-c-1 {
+		padding-bottom: 54%;
 	}
 }
-
 /* three column layout */
 @media only screen and ( min-width: $max-width) {
 
@@ -76,46 +82,64 @@ $item-height: #{$row-height}px;
 		width: $max-width;
 	}
 
+	.header {
+		@include background-img("../img/refme/header.png");
+		height: 317px;
+		padding-bottom: 0%;
+	}
+
+	.header, .footer-img {
+		max-width: $max-width;
+	}
+
 	.column {
-		@include columnLayout(33%);
+		display: table-cell;
 	}
 
 	.grid-a {
-		@include background-img("../img/refme/grid-a.png",$min-width,$item-height);
+		@include background-img("../img/refme/grid-a.png");
+		padding-bottom: 55%;
 	}
 
 	.grid-a-1 {
-		@include background-img("../img/refme/grid-a-1.png",$min-width,#{$row-height * 2}px);
+		@include background-img("../img/refme/grid-a-1.png");
+		padding-bottom: 107%;
+	}
+
+	.follow, .about, .explore {
+		padding-bottom: 11%;
+		width: 33%;
 	}
 }
 /* two column layout */
 @media only screen and ( min-width: $mid-width) and ( max-width: $max-width) {
 
-	.header {
-		height: 211px;
+	.column-container {
+		display: block;
+	}
+	
+	.second {
+		float: left;
 	}
 
-	.follow, .about, .explore {
-		height: 43px;
-	}	
-
-	.footer-img {
-		height: 83px;
-	}
-
-	.header, .footer-img, .footer-container, .column-container {
-		width: $mid-width;
+	.third {
+		float: right;
 	}
 
 	.footer-container {
 		display: table;
+		width: 100%;
 			.column {
-				@include columnLayout(33%);
+				@include column-layout(33%);
 			}
 	}
 
+	.follow, .about, .explore {
+		padding-bottom: 11%;
+	}
+
 	.column {
-		@include columnLayout(50%);
+		@include column-layout(50%);
 	}
 
 	.first {
@@ -129,15 +153,6 @@ $item-height: #{$row-height}px;
 }
 /* single column layout */
 @media only screen and ( max-width: $mid-width) {
-
-	.header {
-		height: 106px;
-	}
-	
-	.column-container, .center {
-		width: $min-width;
-		margin: 0 auto;
-	}
 
 	.first, .second, .footer-img, .grid-c-1 {
 		display: none;

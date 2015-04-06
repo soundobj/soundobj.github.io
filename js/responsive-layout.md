@@ -1,5 +1,5 @@
 ---
-layout: null
+layout: plain
 title: Responsive Layout
 permalink: /responsive-layout/
 ---
@@ -15,7 +15,7 @@ permalink: /responsive-layout/
 		<div class="grid-b-1"></div>
 		<div class="grid-b-2"></div>
 	</div>
-	<div class="column">
+	<div class="column third">
 		<div class="grid-c"></div>
 		<div class="grid-c-1"></div>
 	</div>
