@@ -3,165 +3,98 @@ $max-width: #{$column-size * 3}px;
 $mid-width: #{$column-size * 2}px;
 $min-width: #{$column-size}px;
 
-@mixin background-img($path) {
+@mixin background-img($path,$padding-bottom) {
 	background-image: url($path);
 	background-repeat: no-repeat;
 	background-size: 100%;
 	width: 100%;
 	height: 0;
-}
-
-@mixin column-layout($width) {
-	display: table-cell;
-	width: $width;
-}
-
-.header {
-	@include background-img("../img/refme/header.png");
-	padding-bottom: 56%;
-}
-
-.grid-c {
-	@include background-img("../img/refme/grid-c.png");
-	padding-bottom: 108%;
-}
-
-.follow {
-	@include background-img("../img/refme/footer-a.png");
-}
-
-.about {
-	@include background-img("../img/refme/footer-b.png");
-}
-
-.explore {
-	@include background-img("../img/refme/footer-c.png");
-}
-
-.follow, .about, .explore {
-	padding-bottom: 34%;
+	padding-bottom: $padding-bottom;
 }
 
 .center {
 	margin: 0 auto;
 }
 
-// shared by 3 and 2 column layouts
-@media only screen and ( min-width: $mid-width) {
-
-	.footer-img {
-		@include background-img("../img/refme/footer.png");
-		padding-bottom: 22%;
-	}
-
-	.grid-b {
-		@include background-img("../img/refme/grid-b.png");
-	}
-
-	.grid-b-1 {
-		@include background-img("../img/refme/grid-b-1.png");
-	}
-
-	.grid-b-2 {
-		@include background-img("../img/refme/grid-b-2.png");
-	}
-
-	.grid-c-1 {
-		@include background-img("../img/refme/grid-c-1.png");
-	}
-
-	.grid-b, .grid-b-1, .grid-b-2, .grid-c-1 {
-		padding-bottom: 54%;
-	}
+.header {
+	@include background-img("../img/refme/header.png",56%);
 }
-/* three column layout */
-@media only screen and ( min-width: $max-width) {
 
-	.column-container, .footer-container {
+.grid-a {
+	@include background-img("../img/refme/grid-a.png",55%);
+}
+
+.grid-a-1 {
+	@include background-img("../img/refme/grid-a-1.png",107%);
+}
+
+.grid-b {
+	@include background-img("../img/refme/grid-b.png",54%);
+}
+
+.grid-b-1 {
+	@include background-img("../img/refme/grid-b-1.png",54%);
+}
+
+.grid-b-2 {
+	@include background-img("../img/refme/grid-b-2.png",54%);
+}
+
+.grid-c {
+	@include background-img("../img/refme/grid-c.png",108%);
+}
+
+.grid-c-1 {
+	@include background-img("../img/refme/grid-c-1.png",54%);
+}
+
+.follow {
+	@include background-img("../img/refme/footer-a.png",11%);
+}
+
+.about {
+	@include background-img("../img/refme/footer-b.png",11%);
+}
+
+.explore {
+	@include background-img("../img/refme/footer-c.png",11%);
+}
+
+.footer-img {
+	@include background-img("../img/refme/footer.png",22%);
+}
+
+.header, .footer-img, .column-container, .footer-container {
+	max-width: $max-width;
+}
+
+.column-container, .column {
+	display: block;
+}
+
+.footer-container {
+	display: table;
+	width: 100%;
+		.column {
+			display: table-cell;
+			width: 33%;
+		}
+}
+
+@media only screen and ( min-width: $mid-width) {
+	.column-container {
 		display: table;
-		width: $max-width;
-	}
-
-	.header {
-		@include background-img("../img/refme/header.png");
-		height: 317px;
-		padding-bottom: 0%;
-	}
-
-	.header, .footer-img {
-		max-width: $max-width;
 	}
 
 	.column {
 		display: table-cell;
-	}
-
-	.grid-a {
-		@include background-img("../img/refme/grid-a.png");
-		padding-bottom: 55%;
-	}
-
-	.grid-a-1 {
-		@include background-img("../img/refme/grid-a-1.png");
-		padding-bottom: 107%;
-	}
-
-	.follow, .about, .explore {
-		padding-bottom: 11%;
-		width: 33%;
+		width: $min-width;
 	}
 }
-/* two column layout */
-@media only screen and ( min-width: $mid-width) and ( max-width: $max-width) {
 
-	.column-container {
-		display: block;
-	}
-	
-	.second {
-		float: left;
-	}
-
-	.third {
-		float: right;
-	}
-
-	.footer-container {
-		display: table;
-		width: 100%;
-			.column {
-				@include column-layout(33%);
-			}
-	}
-
-	.follow, .about, .explore {
-		padding-bottom: 11%;
-	}
-
-	.column {
-		@include column-layout(50%);
-	}
-
-	.first {
-		display: none;
-	}
-
-	.grid-a, .grid-a-1 {
-		background-image: none;
-	}
-
-}
-/* single column layout */
-@media only screen and ( max-width: $mid-width) {
-
-	.first, .second, .footer-img, .grid-c-1 {
-		display: none;
-	}
-	.footer-container {
-		display: block;
-	}
-
-	.footer-img, .grid-a, .grid-a-1, .grid-b, .grid-b-1, .grid-b-2, .grid-c-1 {
-		background-image: none;
+@media only screen and ( min-width: $max-width) {
+	.header {
+		@include background-img("../img/refme/header.png",0%);
+		height: 317px;
 	}
 }
