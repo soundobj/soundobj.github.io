@@ -1,0 +1,12 @@
+.floating {
+	position: absolute;
+	color: red;
+}
+
+.hidden-word {
+	visibility: hidden;
+}
+
+ .hidden-word, .word, .floating {
+ 	padding: 0 3px 0 3px;
+ } 
