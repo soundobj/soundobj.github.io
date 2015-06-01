@@ -3,3 +3,17 @@ _site
 node_modules/
 js/test/test-spec.js
 js/es6/some.js
+
+.idea/.name
+
+.idea/jsLibraryMappings.xml
+
+.idea/misc.xml
+
+.idea/modules.xml
+
+.idea/soundobj.github.io.iml
+
+.idea/vcs.xml
+
+.idea/workspace.xml
